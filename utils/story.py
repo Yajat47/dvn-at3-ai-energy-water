@@ -8,11 +8,11 @@ WHY_ARGUABLE = (
 )
 
 PERSONA = {
-    "name": "Priya",
+    "name": "Daniel",
     "role": "Infrastructure planner, Western Sydney council",
     "note": "Fictional persona",
     "decision": (
-        "Priya is assessing data-centre development applications. She has to advise councillors on "
+        "Daniel is assessing data-centre development applications. He has to advise councillors on "
         "whether these sites are a real risk to local electricity and water supply, or a headline that "
         "looks bigger than it is."
     ),

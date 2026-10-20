@@ -230,7 +230,7 @@ with st.expander("Design notes: why these charts"):
         "- **Growth chart indexed to 2020 = 100, not two y-axes.** Data-centre TWh and world TWh differ "
         "about 65-fold in size. A dual-axis chart lets the designer line the two up however they like, which "
         "invents a relationship. One indexed axis compares growth rates honestly.\n"
-        "- **Australia reference line.** It gives the persona a yardstick she already knows.\n"
+        "- **Australia reference line.** It gives the persona a yardstick he already knows.\n"
         "- **Colour.** One blue for the series that matters and grey for context; US and China get the first "
         "two palette colours, checked for colour-blind separation."
     )

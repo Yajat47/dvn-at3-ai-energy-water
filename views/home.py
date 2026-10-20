@@ -24,7 +24,7 @@ with persona:
         st.markdown(f"### {PERSONA['name']}")
         st.markdown(f"**{PERSONA['role']}**  \n_{PERSONA['note']}_")
         st.markdown(PERSONA["decision"])
-        st.markdown("**What she needs to know**")
+        st.markdown("**What he needs to know**")
         st.markdown("\n".join(f"{i}. {q}" for i, q in enumerate(PERSONA["needs"], start=1)))
 
 with story:
