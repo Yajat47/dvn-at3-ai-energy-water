@@ -2,7 +2,7 @@
 
 DVN 36104 Assignment 3 group data narrative, built with Streamlit.
 
-- **Live app:** _add the Streamlit URL here once deployed_
+- **Live app:** https://dvn-at3-ai-energy-water.streamlit.app
 - **Question:** Is AI's energy and water footprint a global problem, or a local one?
 - **Persona:** Priya, an infrastructure planner at a Western Sydney council assessing data-centre development applications (fictional).
 
