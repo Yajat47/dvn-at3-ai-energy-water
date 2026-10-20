@@ -1,0 +1,18 @@
+entity,year,kind,dc_share_pct,demand_twh,dc_twh,method
+China,2020,actual,0.7988,7762.0300,62.0000,IEA share (OWID) x Ember demand
+China,2023,actual,0.8899,9439.3700,84.0000,IEA share (OWID) x Ember demand
+China,2024,actual,1.0129,10069.8800,102.0000,IEA share (OWID) x Ember demand
+China,2025,actual,1.1075,10563.9000,117.0000,IEA share (OWID) x Ember demand
+Rest of world,2020,actual,0.6657,14870.8500,99.0000,World minus United States minus China
+Rest of world,2023,actual,0.7647,15953.1600,122.0000,World minus United States minus China
+Rest of world,2024,actual,0.7961,16455.5200,131.0000,World minus United States minus China
+Rest of world,2025,actual,0.8637,16672.6400,144.0000,World minus United States minus China
+United States,2020,actual,2.6403,4090.4900,108.0000,IEA share (OWID) x Ember demand
+United States,2023,actual,3.6042,4272.8100,154.0000,IEA share (OWID) x Ember demand
+United States,2024,actual,4.1545,4404.8300,183.0000,IEA share (OWID) x Ember demand
+United States,2025,actual,4.9385,4535.8100,224.0000,IEA share (OWID) x Ember demand
+World,2020,actual,1.0066,26723.3700,269.0000,IEA share (OWID) x Ember demand
+World,2023,actual,1.2135,29665.3400,360.0000,IEA share (OWID) x Ember demand
+World,2024,actual,1.3450,30930.2300,416.0000,IEA share (OWID) x Ember demand
+World,2025,actual,1.5265,31772.3500,485.0000,IEA share (OWID) x Ember demand
+World,2030,projection,3.0000,,950.0000,IEA 2026 base case (report text)

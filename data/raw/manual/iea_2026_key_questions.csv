@@ -1,0 +1,6 @@
+metric,year,value,unit,kind,source_id,quote
+data_centre_electricity,2025,485,TWh,actual,IEA-2026-KQ,"Our updated projections see electricity consumption from data centres roughly doubling from 485 TWh in 2025 to 950 TWh in 2030, accounting for around 3% of global electricity demand by that date."
+data_centre_electricity,2030,950,TWh,projection,IEA-2026-KQ,"Our updated projections see electricity consumption from data centres roughly doubling from 485 TWh in 2025 to 950 TWh in 2030, accounting for around 3% of global electricity demand by that date."
+data_centre_share_of_world_electricity,2030,3,%,projection,IEA-2026-KQ,"Our updated projections see electricity consumption from data centres roughly doubling from 485 TWh in 2025 to 950 TWh in 2030, accounting for around 3% of global electricity demand by that date."
+data_centre_electricity_growth,2025,17,%,actual,IEA-2026-KQ,"The global electricity demand of data centres – the critical infrastructure for training and running AI models – grew by 17% in 2025, in line with IEA projections."
+ai_data_centre_electricity_growth,2025,50,%,actual,IEA-2026-KQ,"Electricity consumption from AI-focused data centres grew even faster, surging 50% in 2025."
