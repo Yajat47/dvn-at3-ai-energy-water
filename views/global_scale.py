@@ -10,7 +10,7 @@ import streamlit as st
 from utils import data
 from utils.story import PERSONA, TEAM
 from utils.theme import CONTEXT, INK, INK_2, PLOTLY_CONFIG, SERIES, SURFACE, style
-from utils.trace import trace
+from utils.trace import line_number, trace
 
 RAW_SHARE = "data/raw/owid_data_centers_share_electricity_demand.csv"
 RAW_DEMAND = "data/raw/owid_ember_electricity_demand.csv"
@@ -66,7 +66,7 @@ k2.metric("World share, 2025", f"{w25['dc_share_pct']:.1f}%",
           help="IEA data-centre TWh divided by Ember world electricity demand")
 k3.metric("Growth since 2020", f"+{dc_growth_20:.0f}%", f"All electricity: +{all_growth_20:.0f}%",
           delta_color="off", border=True, help="2020 to 2025, both in TWh")
-k4.metric("IEA projection, 2030", f"{proj['dc_twh']:.0f} TWh", f"About {proj['dc_share_pct']:.0f}% of world electricity",
+k4.metric("IEA projection, 2030", f"{proj['dc_twh']:.0f} TWh", f"~{proj['dc_share_pct']:.0f}% of world total",
           delta_color="off", border=True, help="IEA 2026 base case")
 
 # ---------------------------------------------------------------- chart 1: trajectory
@@ -134,10 +134,24 @@ trace(
         f"Data-centre electricity                    {s25:.7f} / 100 x {d25:,.2f} = {s25 / 100 * d25:.1f} TWh\n"
         f"IEA report text                            \"from 485 TWh in 2025 to 950 TWh in 2030\""
     ),
+    exact_rows=[
+        ("World data-centre share, 2025", RAW_SHARE, "World,OWID_WRL,2025,"),
+        ("World electricity demand, 2025", RAW_DEMAND, "World,OWID_WRL,2025,"),
+        ("IEA sentence with 485 TWh and 950 TWh", RAW_IEA, "data_centre_electricity,2025,"),
+    ],
     tables={
+        "The two raw rows behind 485 TWh": pd.DataFrame(
+            [
+                {"What": "World data-centre share, 2025", "File": RAW_SHARE.split("/")[-1],
+                 "Line": str(line_number(RAW_SHARE, "World,OWID_WRL,2025,")), "Value": f"{s25:.7f} %"},
+                {"What": "World electricity demand, 2025", "File": RAW_DEMAND.split("/")[-1],
+                 "Line": str(line_number(RAW_DEMAND, "World,OWID_WRL,2025,")), "Value": f"{d25:,.2f} TWh"},
+                {"What": "Share / 100 x demand", "File": "", "Line": "", "Value": f"{s25 / 100 * d25:.1f} TWh"},
+            ]
+        ),
+        "Raw rows: IEA report numbers": iea_raw,
         "Raw rows: data-centre share, World": raw_share_world,
         "Raw rows: electricity demand, World, 2020 onward": raw_demand_world,
-        "Raw rows: IEA report numbers": iea_raw,
         "Processed rows used in this chart": g[g["entity"] == "World"],
     },
 )
