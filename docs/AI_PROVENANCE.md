@@ -1,0 +1,17 @@
+# AI provenance matrix
+
+One row per substantive AI use. **Every member owns at least one row.** The verification must name a check that could have failed, and say what it found.
+
+Replace the `TODO` rows with your own. `python scripts/check_package.py` counts a row only when it has no `TODO` and a real verification.
+
+| Artefact | Who | Tool | What was asked | What came back | How it was verified | Outcome |
+|---|---|---|---|---|---|---|
+| `docs/research-brief.md`; source choice for page 1 | Yajat | Claude (Claude Code) | Find recent, citable public data on AI data-centre electricity and water use | A source list with figures (IEA 2026, OWID, Ember, CSO Ireland, AEMO 2026 ESOO, Sydney water reporting), with two widely quoted figures flagged as untraceable | Opened the IEA executive summary and searched for "485 TWh in 2025"; this would have failed if the sentence was missing or the number differed. It matched. | Used the IEA 2026 figures; left the two untraceable figures out of the app |
+| `scripts/build_global.py` and `data/processed/global_*.csv` | Yajat | Claude (Claude Code) | Derive data-centre TWh from the OWID share file and the Ember demand file | A build script and three processed files | Recalculated World 2025 by hand: 1.5264845 / 100 x 31,772.35 = 485.0 TWh, against the IEA's 485 TWh. The script also stops if the result is 2 TWh or more off. A wrong join or unit would have failed both. Both passed. | Kept |
+| `views/global_scale.py` charts | Yajat | Claude (Claude Code) | Build the Global scale page with labelled, traceable charts | Three Plotly charts, a number-card row and trace boxes | Claude rendered the page in a test browser at 1280x720: the fourth card's caption was cut off and a trace table was too wide to read, so that check failed and both were fixed. The palette was run through a colour-blind separation validator (fails below delta E 8): passed. | Revised, then kept |
+| `data/data_dictionary.yml`, `scripts/check_package.py` | Yajat | Claude (Claude Code) | Build a data dictionary to the A2 Part C standard and a checker for the marking checks | The dictionary, a rebuild script, the checker and a GitHub Action | The checker was run against the dictionary and failed: commas in column descriptions had split YAML fields, so the dictionary did not match the files. Fixed by quoting every description; the checker then passed. | Fixed, then kept |
+| Group question and persona wording | Yajat | Claude (Claude Code) | Suggest an arguable question and a persona for the energy and water territory | "Global problem or local one?" and a Western Sydney council planner | Tested arguability against our data: world share 1.5% against the US share 4.9% in 2025. If local shares were no higher than the global share, the question would not be arguable. They were higher. | Adopted; persona renamed to Daniel at my request |
+| Part 1 recording edit | Yajat | Claude (Claude Code) with Whisper running locally | Transcribe my 7:09 recording and cut it to under five minutes | A transcript, a cut list and a 4:06 video | Claude re-transcribed the cut video to look for words clipped at the joins; this found four, which were re-cut and checked again. I then watched the final video end to end. | Used for my Part 1 submission |
+| TODO | Member A | TODO | TODO | TODO | TODO | TODO |
+| TODO | Member B | TODO | TODO | TODO | TODO | TODO |
+| TODO | Member C | TODO | TODO | TODO | TODO | TODO |
