@@ -1,7 +1,5 @@
 # AI use
 
-Each member records their own AI use here: the tool, what it was used for, and how the output was checked. Keep it specific and honest. It should match what you say in your recording.
-
 ---
 
 ## Yajat: Home, 1. Global scale, Sources and method, repo setup
