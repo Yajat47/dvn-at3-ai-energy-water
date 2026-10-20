@@ -45,6 +45,7 @@ scripts/                one build script per page: raw -> processed
 sources.csv             one row per source
 docs/design-log.md      each person's design decision, for the recording
 docs/research-brief.md  checked facts and sources for the whole narrative
+AI_USE.md               each member's AI use and the checks they applied
 ```
 
 ## How we work
