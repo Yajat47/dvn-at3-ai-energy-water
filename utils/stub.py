@@ -14,13 +14,15 @@ def coming_soon(*, key: str, title: str, need: int, brief: str, sources: list[tu
     st.markdown("\n".join(f"- [{name}]({url})" for name, url in sources))
     with st.expander("Checklist for the page owner"):
         st.markdown(
+            "Full list: `docs/PART2_CHECKLIST.md`.\n\n"
             "- Copy `views/_page_template.py` into this file and build from there.\n"
-            "- Put downloads in `data/raw/` and never edit them. Copy numbers taken from report text into "
-            "`data/raw/manual/` with the original sentence in a `quote` column.\n"
-            "- Write a `scripts/build_<page>.py` that produces your `data/processed/` files.\n"
-            "- Add one row per source to `sources.csv`.\n"
-            "- Put a `trace(...)` box under every chart.\n"
-            "- Use colours from `utils/theme.py`. No dual axes, no pies for close values.\n"
-            "- Add your design decision to `docs/design-log.md`.\n"
-            "- Update your line in `STATUS` in `utils/story.py`."
+            "- Put source files in `data/samples/` unchanged; numbers from report text go in "
+            "`data/samples/manual/` with the original sentence in a `quote` column.\n"
+            "- Write `scripts/build_<page>.py` to produce your `data/processed/` files.\n"
+            "- Describe every file in `data/data_dictionary.yml`.\n"
+            "- Each chart: finding as title, caption with unit, baseline and years, axis and legend titles, "
+            "labelled values, and a `trace(...)` box.\n"
+            "- Add your limits to `LIMITS` in `utils/story.py`.\n"
+            "- Add your row to `docs/AI_PROVENANCE.md` and your section to `DISCLOSURE.md`.\n"
+            "- Run `python scripts/build_all.py` and `python scripts/check_package.py` before your PR."
         )

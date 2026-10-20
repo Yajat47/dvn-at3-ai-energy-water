@@ -2,6 +2,8 @@
 
 import streamlit as st
 
+from utils import data
+
 st.set_page_config(page_title="AI's footprint: global or local?", layout="wide")
 
 pages = {
@@ -20,3 +22,12 @@ pages = {
 }
 
 st.navigation(pages).run()
+
+# Footer on every page: sources and the last data refresh.
+st.divider()
+src = data.sources()
+st.caption(
+    "**Sources:** "
+    + "; ".join(f"{row.publisher}, *{row.title}*" for row in src.itertuples())
+    + f"  \n**Data last refreshed:** {data.last_refresh()} · Full details on the Sources and method page."
+)

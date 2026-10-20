@@ -16,7 +16,7 @@ coming_soon(
          "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/"),
         ("AEMO 2026 ESOO: data centre forecasting overview (PDF)",
          "https://www.aemo.com.au/-/media/files/electricity/nem/planning_and_forecasting/nem_esoo/2026/2026-esoo-data-centre-forecasting-overview.pdf"),
-        ("Our World in Data: data-centre share of electricity by region (already in data/raw/)",
+        ("Our World in Data: data-centre share of electricity by region (already in data/samples/)",
          "https://ourworldindata.org/grapher/data-centers-share-electricity-demand"),
     ],
 )

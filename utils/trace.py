@@ -3,9 +3,9 @@
 Usage:
     trace(
         sources=["OWID-DC-SHARE"],
-        files=["data/raw/owid_data_centers_share_electricity_demand.csv"],
+        files=["data/samples/owid_data_centers_share_electricity_demand.csv"],
         steps=["Kept World rows", "Multiplied share by demand"],
-        exact_rows=[("World share, 2025", "data/raw/owid_data_centers_share_electricity_demand.csv",
+        exact_rows=[("World share, 2025", "data/samples/owid_data_centers_share_electricity_demand.csv",
                      "World,OWID_WRL,2025,")],
         tables={"Processed rows": df},
     )
@@ -42,14 +42,14 @@ def trace(
 ) -> None:
     """exact_rows: (label, repo path, line prefix) -> a link that opens GitHub on that exact row."""
     with st.expander(label):
-        registry = load_sources().set_index("source_id")
+        registry = load_sources().set_index("id")
         st.markdown("**Sources**")
         for sid in sources:
             if sid in registry.index:
                 row = registry.loc[sid]
                 st.markdown(f"- `{sid}`: [{row['title']}]({row['url']}) ({row['publisher']}, retrieved {row['retrieved']})")
             else:
-                st.markdown(f"- `{sid}`: missing from sources.csv, add it")
+                st.markdown(f"- `{sid}`: missing from data/data_dictionary.yml, add it")
 
         st.markdown("**Files**")
         for f in files:

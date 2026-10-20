@@ -24,8 +24,21 @@ AXIS = "#c3c2b7"
 FONT = 'system-ui, -apple-system, "Segoe UI", sans-serif'
 
 
-def style(fig: go.Figure, *, height: int = 420, y_title: str | None = None, legend: bool = True) -> go.Figure:
-    """Apply the shared look to a Plotly figure and return it."""
+def style(
+    fig: go.Figure,
+    *,
+    height: int = 420,
+    x_title: str | None = None,
+    y_title: str | None = None,
+    legend_title: str | None = None,
+    legend: bool = True,
+) -> go.Figure:
+    """Apply the shared look to a Plotly figure and return it.
+
+    Rubric: every axis and legend needs a label with units, so pass x_title, y_title and (for two or more
+    series) legend_title, for example style(fig, x_title="Year", y_title="TWh per year",
+    legend_title="Region (TWh per year)").
+    """
     fig.update_layout(
         height=height,
         font=dict(family=FONT, size=14, color=INK_2),
@@ -35,9 +48,10 @@ def style(fig: go.Figure, *, height: int = 420, y_title: str | None = None, lege
         hovermode="x unified",
         hoverlabel=dict(bgcolor="white", font=dict(family=FONT, color=INK)),
         showlegend=legend,
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0, title=None),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0,
+                    title=dict(text=legend_title, font=dict(color=INK_2)) if legend_title else None),
     )
-    fig.update_xaxes(showgrid=False, linecolor=AXIS, ticks="outside", tickcolor=AXIS, color=MUTED)
+    fig.update_xaxes(title=x_title, showgrid=False, linecolor=AXIS, ticks="outside", tickcolor=AXIS, color=MUTED)
     fig.update_yaxes(
         title=y_title, gridcolor=GRID, gridwidth=1, zeroline=True, zerolinecolor=AXIS, color=MUTED, rangemode="tozero"
     )
