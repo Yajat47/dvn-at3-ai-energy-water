@@ -1,0 +1,22 @@
+name: Package check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Rubric checks (data package, docs, app)
+        # 13 (four charts) and 28 (a provenance row per member) wait on teammates' pages.
+        # Remove "--pending 13,28" before the 6 Nov milestone.
+        run: python scripts/check_package.py --pending 13,28

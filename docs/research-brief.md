@@ -1,6 +1,6 @@
 # Research brief
 
-Facts gathered on 20 October 2026 to help each page owner start. **Not on screen.** Before a number goes into the app, download the source file into `data/raw/`, rebuild it in a script, and add a `sources.csv` row.
+Facts gathered on 20 October 2026 to help each page owner start. **Not on screen.** Before a number goes into the app, download the source file into `data/samples/`, rebuild it in a script, and add a `sources.csv` row.
 
 "Checked" means read on the publisher's own page or file. "Secondary" means seen only in news coverage, so find the primary source first.
 
@@ -21,7 +21,7 @@ Our World in Data still shows 945 TWh for 2030 (the IEA's 2025 figure). Use 950 
 | Fact | Number | Source | Status |
 |---|---|---|---|
 | Ireland, data-centre share of metered electricity | 5% (2015) to 23% (2025); 7,663 GWh in 2025, up 10%; households 28% | CSO, Data Centres Metered Electricity Consumption 2025, PxStat table MEC02 | Checked |
-| United States share, 2025 | 4.9% | IEA via OWID (already in `data/raw/`) | Checked |
+| United States share, 2025 | 4.9% | IEA via OWID (already in `data/samples/`) | Checked |
 | Virginia | more than a quarter of the state's electricity | Our World in Data article | Checked (OWID) |
 | NEM data centres, FY26 | about 165 sites, about 5 TWh, about 3% of NEM operational consumption | AEMO 2026 ESOO data-centre forecasting overview | Checked |
 | NEM forecast, Step Change | about 15 TWh (7.8%) by FY30; about 34 TWh (13%) by FY36 | AEMO 2026 ESOO | Checked |

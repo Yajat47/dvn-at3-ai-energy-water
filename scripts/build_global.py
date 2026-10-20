@@ -2,7 +2,7 @@
 
 Run from the repo root:  python scripts/build_global.py
 
-Inputs (data/raw/, untouched downloads):
+Inputs (data/samples/, source samples):
   owid_data_centers_share_electricity_demand.csv  IEA data-centre electricity as % of demand
   owid_ember_electricity_demand.csv               Ember total electricity demand, TWh
   manual/iea_2026_key_questions.csv               numbers transcribed from the IEA 2026 report
@@ -21,7 +21,7 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data" / "raw"
+SAMPLES = ROOT / "data" / "samples"
 OUT = ROOT / "data" / "processed"
 
 ENTITIES = ["World", "United States", "China"]
@@ -29,17 +29,17 @@ COMPARE_WITH = ["Australia", "United Kingdom", "France", "Germany"]
 
 
 def load_inputs() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    share = pd.read_csv(RAW / "owid_data_centers_share_electricity_demand.csv").rename(
+    share = pd.read_csv(SAMPLES / "owid_data_centers_share_electricity_demand.csv").rename(
         columns={
             "Entity": "entity",
             "Year": "year",
             "Share of total electricity demand coming from data centers": "dc_share_pct",
         }
     )
-    demand = pd.read_csv(RAW / "owid_ember_electricity_demand.csv").rename(
+    demand = pd.read_csv(SAMPLES / "owid_ember_electricity_demand.csv").rename(
         columns={"Entity": "entity", "Year": "year", "Electricity demand": "demand_twh"}
     )
-    iea = pd.read_csv(RAW / "manual" / "iea_2026_key_questions.csv")
+    iea = pd.read_csv(SAMPLES / "manual" / "iea_2026_key_questions.csv")
     return share, demand, iea
 
 

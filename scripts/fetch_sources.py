@@ -1,15 +1,15 @@
-"""Download the raw source files used by the app into data/raw/.
+"""Live mode: download the source files into data/samples/.
 
-Run from the repo root:  python scripts/fetch_raw.py
+Run from the repo root:  python scripts/fetch_sources.py
 
 Raw files are never edited by hand. If a source updates, re-run this script,
-update the `retrieved` date in sources.csv, then re-run the build scripts.
+update the `retrieved` date in data/data_dictionary.yml, then run python scripts/build_all.py.
 """
 
 from pathlib import Path
 from urllib.request import Request, urlopen
 
-RAW = Path(__file__).resolve().parents[1] / "data" / "raw"
+RAW = Path(__file__).resolve().parents[1] / "data" / "samples"
 
 # Our World in Data grapher exports: CSV (full data) + metadata JSON.
 OWID_CHARTS = {

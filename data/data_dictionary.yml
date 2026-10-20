@@ -1,0 +1,174 @@
+# Data dictionary for every dataset in data/. One source of truth:
+#   - the app reads sources and the "last refreshed" date from here
+#   - scripts/build_all.py renders data/DATA_DICTIONARY.md from here
+#   - scripts/check_package.py checks every file in data/ against it
+#
+# Add your sources and datasets below the existing ones. Every column needs a type, a unit
+# ("none" if it has no unit) and a description. Samples say how they were obtained; processed
+# files name the script and the steps that produce them.
+
+sources:
+  - id: IEA-2026-KQ
+    title: Key Questions on Energy and AI (executive summary)
+    publisher: International Energy Agency
+    url: https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary
+    licence: IEA terms of use (figures quoted with attribution)
+    retrieved: '2026-10-20'
+    cadence: One-off report (2026)
+    owner: Yajat
+  - id: OWID-DC-SHARE
+    title: Share of total electricity demand used by data centers
+    publisher: Our World in Data, based on IEA (2025, 2026) and Ember (2026)
+    url: https://ourworldindata.org/grapher/data-centers-share-electricity-demand
+    licence: CC BY 4.0 (Our World in Data processing); underlying IEA data under IEA terms
+    retrieved: '2026-10-20'
+    cadence: Updated when the IEA publishes new estimates
+    owner: Yajat
+  - id: OWID-EMBER-DEMAND
+    title: Electricity demand
+    publisher: Our World in Data, based on Ember (2026)
+    url: https://ourworldindata.org/grapher/electricity-demand
+    licence: CC BY 4.0
+    retrieved: '2026-10-20'
+    cadence: Annual (last updated 2026-06-30, next 2027-06-30)
+    owner: Yajat
+
+datasets:
+  # ---------------------------------------------------------------- source samples
+  - id: owid_dc_share
+    role: sample
+    path: data/samples/owid_data_centers_share_electricity_demand.csv
+    metadata_file: data/samples/owid_data_centers_share_electricity_demand.metadata.json
+    format: csv
+    source_ids: [OWID-DC-SHARE]
+    description: IEA data-centre electricity use as a share of each region's electricity demand.
+    primary_key: [Entity, Year]
+    time_column: Year
+    time_coverage: 2020 and 2023-2025 (the IEA publishes no 2021-2022 estimates)
+    latest_observation: 2025
+    columns:
+      Entity: {type: string, unit: 'none', description: "Country or IEA region name"}
+      Code: {type: string, unit: 'none', description: "ISO 3166-1 alpha-3 code; empty for regions, OWID_WRL for World"}
+      Year: {type: integer, unit: 'year', description: "Calendar year"}
+      Share of total electricity demand coming from data centers: {type: number, unit: '%', description: "Data-centre electricity use divided by total electricity demand, x 100"}
+    transform: Downloaded unchanged from the OWID grapher CSV export by scripts/fetch_sources.py.
+    owner: Yajat
+
+  - id: owid_ember_demand
+    role: sample
+    path: data/samples/owid_ember_electricity_demand.csv
+    metadata_file: data/samples/owid_ember_electricity_demand.metadata.json
+    format: csv
+    source_ids: [OWID-EMBER-DEMAND]
+    description: Total electricity demand (generation adjusted for imports and exports) by country and region.
+    primary_key: [Entity, Year]
+    time_column: Year
+    time_coverage: 1990-2025 (varies by entity)
+    latest_observation: 2025
+    columns:
+      Entity: {type: string, unit: 'none', description: "Country or region name"}
+      Code: {type: string, unit: 'none', description: "ISO 3166-1 alpha-3 code; empty for regions"}
+      Year: {type: integer, unit: 'year', description: "Calendar year"}
+      Electricity demand: {type: number, unit: 'TWh', description: "Total electricity demand in terawatt-hours"}
+    transform: Downloaded unchanged from the OWID grapher CSV export by scripts/fetch_sources.py.
+    owner: Yajat
+
+  - id: iea_2026_key_numbers
+    role: sample
+    path: data/samples/manual/iea_2026_key_questions.csv
+    format: csv
+    source_ids: [IEA-2026-KQ]
+    description: Headline numbers copied from the IEA report text, each with the sentence it came from.
+    primary_key: [metric, year]
+    time_column: year
+    time_coverage: 2025 (actual) and 2030 (projection)
+    latest_observation: 2025
+    observation_filter: kind == 'actual'
+    columns:
+      metric: {type: string, unit: 'none', description: "What the number measures"}
+      year: {type: integer, unit: 'year', description: "Year the number refers to"}
+      value: {type: number, unit: 'see unit column', description: "The number as printed in the report"}
+      unit: {type: string, unit: 'none', description: "Unit of value (TWh or %)"}
+      kind: {type: string, unit: 'none', description: "actual or projection"}
+      source_id: {type: string, unit: 'none', description: "Source id in this dictionary"}
+      quote: {type: string, unit: 'none', description: "The report sentence, word for word"}
+    transform: Typed in by hand from the report web page; the quote column holds each sentence word for word.
+    owner: Yajat
+
+  # ---------------------------------------------------------------- processed files the app reads
+  - id: global_dc_electricity
+    role: processed
+    path: data/processed/global_dc_electricity.csv
+    format: csv
+    source_ids: [OWID-DC-SHARE, OWID-EMBER-DEMAND, IEA-2026-KQ]
+    description: Data-centre electricity in TWh and as a share of demand for World, United States, China and Rest of world, plus the IEA 2030 projection.
+    primary_key: [entity, year]
+    time_column: year
+    time_coverage: 2020 and 2023-2025 (actual); 2030 (World projection only)
+    latest_observation: 2025
+    observation_filter: kind == 'actual'
+    columns:
+      entity: {type: string, unit: 'none', description: "World, United States, China or Rest of world"}
+      year: {type: integer, unit: 'year', description: "Calendar year"}
+      kind: {type: string, unit: 'none', description: "actual (IEA estimate) or projection (IEA 2026 base case)"}
+      dc_share_pct: {type: number, unit: '%', description: "Data-centre share of electricity demand"}
+      demand_twh: {type: number, unit: 'TWh', description: "Total electricity demand; empty for the projection row"}
+      dc_twh: {type: number, unit: 'TWh', description: "Data-centre electricity use"}
+      method: {type: string, unit: 'none', description: "How the row was produced"}
+    transform:
+      script: scripts/build_global.py
+      inputs: [owid_dc_share, owid_ember_demand, iea_2026_key_numbers]
+      steps:
+        - Keep World, United States and China rows from both OWID files and inner-join on Entity and Year.
+        - dc_twh = share (%) / 100 x Electricity demand (TWh).
+        - Rest of world = World minus United States minus China (TWh); its share = dc_twh / demand_twh x 100.
+        - Add the World 2030 projection (950 TWh, 3%) from the IEA manual file.
+        - Stop if World 2025 differs from the IEA's 485 TWh by 2 TWh or more, or 2024-25 growth from 17% by 1.5 points.
+    owner: Yajat
+
+  - id: global_growth_index
+    role: processed
+    path: data/processed/global_growth_index.csv
+    format: csv
+    source_ids: [OWID-DC-SHARE, OWID-EMBER-DEMAND]
+    description: World data-centre electricity and world electricity demand, each indexed to 2020 = 100.
+    primary_key: [year, series]
+    time_column: year
+    time_coverage: 2020 and 2023-2025
+    latest_observation: 2025
+    columns:
+      year: {type: integer, unit: 'year', description: "Calendar year"}
+      series: {type: string, unit: 'none', description: "Data-centre electricity or All electricity demand"}
+      twh: {type: number, unit: 'TWh', description: "Value of the series in that year"}
+      index_2020: {type: number, unit: 'index (2020 = 100)', description: "twh / twh in 2020 x 100"}
+    transform:
+      script: scripts/build_global.py
+      inputs: [owid_dc_share, owid_ember_demand]
+      steps:
+        - Take the World rows of global_dc_electricity (actual only).
+        - index_2020 = value / value in 2020 x 100, separately for each series.
+    owner: Yajat
+
+  - id: global_comparisons
+    role: processed
+    path: data/processed/global_comparisons.csv
+    format: csv
+    source_ids: [OWID-DC-SHARE, OWID-EMBER-DEMAND]
+    description: World data-centre electricity in 2025 next to whole countries' electricity demand.
+    primary_key: [entity, year]
+    time_column: year
+    time_coverage: 2025
+    latest_observation: 2025
+    columns:
+      entity: {type: string, unit: 'none', description: "Comparison country"}
+      year: {type: integer, unit: 'year', description: "Calendar year"}
+      demand_twh: {type: number, unit: 'TWh', description: "The country's total electricity demand"}
+      world_dc_twh: {type: number, unit: 'TWh', description: "World data-centre electricity use"}
+      ratio_dc_to_country: {type: number, unit: 'ratio', description: "world_dc_twh / demand_twh"}
+    transform:
+      script: scripts/build_global.py
+      inputs: [owid_dc_share, owid_ember_demand]
+      steps:
+        - Take Australia, United Kingdom, France and Germany 2025 demand from the Ember file.
+        - ratio_dc_to_country = World 2025 data-centre TWh / country demand TWh.
+    owner: Yajat
