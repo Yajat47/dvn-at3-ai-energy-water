@@ -1,0 +1,29 @@
+year,series,value,unit,record_holder,record_organization,record_year,index_2012
+2012,Training compute of the largest model,1.44945e+18,FLOP,SB-LM,Google,2007,1
+2013,Training compute of the largest model,2.61274e+18,FLOP,DistBelief NNLM,Google,2013,1.80258
+2014,Training compute of the largest model,2.976e+20,FLOP,SNM-skip,Google,2014,205.32
+2015,Training compute of the largest model,3.8e+20,FLOP,AlphaGo Fan,DeepMind,2015,262.169
+2016,Training compute of the largest model,6.62e+21,FLOP,GNMT,Google,2016,4567.26
+2017,Training compute of the largest model,6.62e+21,FLOP,GNMT,Google,2016,4567.26
+2018,Training compute of the largest model,8.74395e+21,FLOP,ResNeXt-101 32x48d,Facebook,2018,6032.61
+2019,Training compute of the largest model,1.07734e+23,FLOP,AlphaStar,DeepMind,2019,74327.7
+2020,Training compute of the largest model,3.14e+23,FLOP,GPT-3 175B (davinci),OpenAI,2020,216634
+2021,Training compute of the largest model,2.047e+24,FLOP,FLAN 137B,Google Research,2021,1.41226e+06
+2022,Training compute of the largest model,2.7415e+24,FLOP,Minerva (540B),Google,2022,1.89141e+06
+2023,Training compute of the largest model,5e+25,FLOP,Gemini 1.0 Ultra,Google DeepMind,2023,3.44959e+07
+2024,Training compute of the largest model,5e+25,FLOP,Gemini 1.0 Ultra,Google DeepMind,2023,3.44959e+07
+2025,Training compute of the largest model,5e+26,FLOP,Grok 4,xAI,2025,3.44959e+08
+2012,Efficiency of the best chip (FP32),1.67447e+10,FLOP/s per W,NVIDIA Tesla K20X,NVIDIA,2012,1
+2013,Efficiency of the best chip (FP32),2.30933e+10,FLOP/s per W,NVIDIA Quadro K6000,NVIDIA,2013,1.37914
+2014,Efficiency of the best chip (FP32),3.01879e+10,FLOP/s per W,NVIDIA GeForce GTX 980,NVIDIA,2014,1.80283
+2015,Efficiency of the best chip (FP32),3.21667e+10,FLOP/s per W,NVIDIA TESLA M60,NVIDIA,2015,1.92101
+2016,Efficiency of the best chip (FP32),7.60533e+10,FLOP/s per W,NVIDIA Tesla P4,NVIDIA,2016,4.54194
+2017,Efficiency of the best chip (FP32),7.60533e+10,FLOP/s per W,NVIDIA Tesla P4,NVIDIA,2016,4.54194
+2018,Efficiency of the best chip (FP32),1.163e+11,FLOP/s per W,NVIDIA Tesla T4,NVIDIA,2018,6.94549
+2019,Efficiency of the best chip (FP32),1.163e+11,FLOP/s per W,NVIDIA Tesla T4,NVIDIA,2018,6.94549
+2020,Efficiency of the best chip (FP32),1.29e+11,FLOP/s per W,NVIDIA RTX A6000,NVIDIA,2020,7.70394
+2021,Efficiency of the best chip (FP32),2.4e+11,FLOP/s per W,Cambricon MLU370-S4/S8,Cambricon,2021,14.3329
+2022,Efficiency of the best chip (FP32),4.65455e+11,FLOP/s per W,Biren BR100,Biren,2022,27.7972
+2023,Efficiency of the best chip (FP32),4.65455e+11,FLOP/s per W,Biren BR100,Biren,2022,27.7972
+2024,Efficiency of the best chip (FP32),4.65455e+11,FLOP/s per W,Biren BR100,Biren,2022,27.7972
+2025,Efficiency of the best chip (FP32),4.65455e+11,FLOP/s per W,Biren BR100,Biren,2022,27.7972

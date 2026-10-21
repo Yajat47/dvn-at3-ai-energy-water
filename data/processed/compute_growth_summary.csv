@@ -1,0 +1,3 @@
+series,start_year,end_year,start_value,end_value,total_multiple,growth_per_year,doubling_time_months
+Efficiency of the best chip (FP32),2012,2025,1.67447e+10,4.65455e+11,27.7972,1.29145,32.5212
+Training compute of the largest model,2012,2025,1.44945e+18,5e+26,3.44959e+08,4.53682,5.50035
