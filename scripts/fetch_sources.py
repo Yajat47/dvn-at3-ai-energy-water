@@ -18,6 +18,11 @@ OWID_CHARTS = {
     # Ember total electricity demand, TWh.
     "electricity-demand": "owid_ember_electricity_demand",
 }
+# Epoch AI direct CSV downloads (page 3: compute vs efficiency).
+EPOCH_FILES = {
+    "https://epoch.ai/data/notable_ai_models.csv": "epoch_notable_ai_models",
+    "https://epoch.ai/data/ml_hardware.csv": "epoch_ml_hardware",
+}
 
 
 def download(url: str, dest: Path) -> None:
@@ -33,6 +38,8 @@ def main() -> None:
         base = f"https://ourworldindata.org/grapher/{slug}"
         download(f"{base}.csv?v=1&csvType=full&useColumnShortNames=false", RAW / f"{name}.csv")
         download(f"{base}.metadata.json?v=1&csvType=full&useColumnShortNames=false", RAW / f"{name}.metadata.json")
+    for url, name in EPOCH_FILES.items():
+        download(url, RAW / f"{name}.csv")
 
 
 if __name__ == "__main__":
