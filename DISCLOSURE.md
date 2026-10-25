@@ -47,9 +47,7 @@ _To be added by Member A._
 
 _To be added by Member B._
 
-### Member C: 4. Water
-
-### Member C (Akil): 4. Water
+### Member C (Akil Venkateshkumar): 4. Water
 
 **Tool:** Claude (Anthropic), used through the Claude chat app, October 2026.
 
