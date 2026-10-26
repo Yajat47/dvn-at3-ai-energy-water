@@ -1,6 +1,7 @@
 """Sources and method. Owner: Yajat. Reads everything from data/data_dictionary.yml."""
 
-import pandas as pd
+from datetime import date
+
 import streamlit as st
 
 from utils import data
@@ -20,29 +21,49 @@ st.markdown(
     "coverage and transform."
 )
 
+
+def table(header: list[str], rows: list[list[str]]) -> None:
+    """Markdown table: long cells wrap, so the page never scrolls sideways at 1366x768."""
+    def cell(value) -> str:
+        return str(value).replace("|", "\\|").replace("\n", " ")
+
+    lines = ["| " + " | ".join(header) + " |", "|" + "---|" * len(header)]
+    lines += ["| " + " | ".join(cell(v) for v in row) + " |" for row in rows]
+    st.markdown("\n".join(lines))
+
+
+def made_by(transform) -> str:
+    """Link to the build script; a transform written as plain text is shown as it is."""
+    if isinstance(transform, dict) and "script" in transform:
+        return f"[{transform['script'].removeprefix('scripts/')}]({REPO}{transform['script']})"
+    return str(transform)
+
+
+d = data.dictionary()
+
 st.markdown("### Sources")
-st.dataframe(
-    data.sources()[["id", "publisher", "title", "url", "licence", "retrieved"]],
-    hide_index=True,
-    width="stretch",
-    column_config={"url": st.column_config.LinkColumn("url", display_text="open")},
+table(
+    ["Source (ID)", "Publisher", "Licence", "Retrieved"],
+    [[f"[{s['title']}]({s['url']}) `{s['id']}`", s["publisher"], s["licence"],
+      f"{date.fromisoformat(str(s['retrieved'])):%d %b %Y}".replace(" ", "\u00a0")]
+     for s in d["sources"]],
 )
 
 st.markdown("### Datasets")
-ds = data.datasets()
-st.dataframe(
-    pd.DataFrame(
-        {
-            "file": ds["path"],
-            "role": ds["role"],
-            "primary key": ds["primary_key"].map(", ".join),
-            "time coverage": ds["time_coverage"].astype(str),
-            "latest observation": ds["latest_observation"].astype(str),
-            "made by": ds["transform"].map(lambda t: t if isinstance(t, str) else t["script"]),
-        }
-    ),
-    hide_index=True,
-    width="stretch",
+st.markdown("**Source samples** in `data/samples/`, stored as published:")
+table(
+    ["File", "Primary key", "Time coverage", "Latest"],
+    [[f"[{x['path'].removeprefix('data/samples/')}]({REPO}{x['path']})", ", ".join(x["primary_key"]),
+      x["time_coverage"], x["latest_observation"]]
+     for x in d["datasets"] if x["role"] == "sample"],
+)
+st.markdown("**Processed files** in `data/processed/`, the files the pages read:")
+table(
+    ["File", "Made by", "Primary key", "Time coverage", "Latest"],
+    [[f"[{x['path'].removeprefix('data/processed/')}]({REPO}{x['path']})",
+      made_by(x["transform"]),
+      ", ".join(x["primary_key"]), x["time_coverage"], x["latest_observation"]]
+     for x in d["datasets"] if x["role"] == "processed"],
 )
 
 st.markdown("### Download the processed files")
