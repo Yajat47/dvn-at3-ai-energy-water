@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
-from utils.theme import style, SERIES, CONTEXT, PLOTLY_CONFIG
+from utils.theme import style, SERIES, CONTEXT, PLOTLY_CONFIG 
 
 ROOT = Path(__file__).resolve().parents[1]
 FILE = 'data/samples/owid_data_centers_share_electricity_demand.csv'
