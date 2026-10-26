@@ -24,13 +24,13 @@ PERSONA = {
     ],
 }
 
-# Page owner names: replace "Member A/B/C" with real names.
+# Page owners, by first name. Must match the "Who" column in docs/AI_PROVENANCE.md.
 TEAM = {
     "home": "Yajat",
     "global": "Yajat",
-    "where": "Member A",
-    "compute": "Member B",
-    "water": "Member C",
+    "where": "Siddharth",
+    "compute": "Niki",
+    "water": "Akil",
     "sources": "Yajat",
 }
 

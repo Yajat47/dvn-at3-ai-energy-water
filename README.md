@@ -2,6 +2,8 @@
 
 DVN 36104 Assignment 3 group data narrative, built with Streamlit.
 
+**Team:** Yajat Srinivasa Murty (lead), Siddharth Guruswamy, Niki Miyake, Akil Venkateshkumar.
+
 - **Live app:** https://dvn-at3-ai-energy-water.streamlit.app
 - **Repository:** https://github.com/Yajat47/dvn-at3-ai-energy-water
 
@@ -32,9 +34,9 @@ The same three stories appear on the app's Home page with links (`USER_STORIES` 
 |---|---|---|
 | Home | `views/home.py` | Yajat |
 | 1. Global scale | `views/global_scale.py` | Yajat |
-| 2. Where it lands | `views/where_it_lands.py` | Member A |
-| 3. Compute vs efficiency | `views/compute_vs_efficiency.py` | Member B |
-| 4. Water | `views/water.py` | Member C |
+| 2. Where it lands | `views/where_it_lands.py` | Siddharth |
+| 3. Compute vs efficiency | `views/compute_vs_efficiency.py` | Niki |
+| 4. Water | `views/water.py` | Akil |
 | Sources and method | `views/sources.py` | Yajat |
 
 ## Portfolio documents

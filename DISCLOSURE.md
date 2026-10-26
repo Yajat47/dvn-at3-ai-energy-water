@@ -39,15 +39,15 @@ I did not take the output on trust.
 5. **Dropped untraceable claims.** Two widely quoted figures (data centres as "17% of global electricity demand growth in 2025", and "IEA projects 1,000 TWh by 2026") could not be traced to a primary source, so they are not in the app.
 6. **Pushed back on complexity.** I flagged coding directions that added more complexity than the page needed.
 
-### Member A: 2. Where it lands
+### Siddharth Guruswamy: 2. Where it lands
 
-_To be added by Member A._
+_To be added by Siddharth._
 
-### Member B: 3. Compute vs efficiency
+### Niki Miyake: 3. Compute vs efficiency
 
-_To be added by Member B._
+_To be added by Niki._
 
-### Member C (Akil Venkateshkumar): 4. Water
+### Akil Venkateshkumar: 4. Water
 
 **Tool:** Claude (Anthropic), used through the Claude chat app, October 2026.
 

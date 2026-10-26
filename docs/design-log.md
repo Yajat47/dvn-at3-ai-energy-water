@@ -16,7 +16,7 @@ One entry per person: the chart you own, the visual task, the form you chose, th
 
 ---
 
-## Member A: 2. Where it lands
+## Siddharth: 2. Where it lands
 
 - **Chart:**
 - **Visual task:**
@@ -26,7 +26,7 @@ One entry per person: the chart you own, the visual task, the form you chose, th
 
 ---
 
-## Member B: 3. Compute vs efficiency
+## Niki: 3. Compute vs efficiency
 
 - **Chart:**
 - **Visual task:**
@@ -36,7 +36,7 @@ One entry per person: the chart you own, the visual task, the form you chose, th
 
 ---
 
-## Member C (Akil): 4. Water
+## Akil: 4. Water
 
 - **Chart:** Google's reported 2025 water use: total consumed, replenished, and The Dalles (`views/water.py`)
 - **Visual task:** Compare three quantities of very different size, to show how much of the total lands in one local water system.
