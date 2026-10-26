@@ -1,6 +1,6 @@
 # Part 2 checklist (due Fri 20 Nov 2026, 11:59pm)
 
-Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests the ones marked **auto**; the rest need a person. "Status" is as of 21 Oct 2026.
+Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests the ones marked **auto**; the rest need a person. "Status" is as of 27 Oct 2026 (release `v1.1`).
 
 ## Timeline
 
@@ -20,32 +20,32 @@ Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests 
 |---|---|---|---|---|---|
 | 1 | README states the question in one sentence | `**Question:**` line in README | Yajat | auto | Pass |
 | 2 | Question on the app's opening screen | Home page heading | Yajat | auto | Pass |
-| 3 | Question is arguable | 1.5% of world electricity vs much higher local shares; stated on Home | All | manual | Pass once page 2 shows local shares |
+| 3 | Question is arguable | 1.5% of world electricity vs much higher local shares; stated on Home | All | manual | Pass |
 | 4 | README names persona and the decision | `**Persona:**` with "Decision the app serves" | Yajat | auto | Pass |
 | 5 | Three as-a / I-want / so-that stories | README "User stories" | Yajat | auto | Pass |
-| 6 | Each story walkable in the app | Home links each story to its pages | All | manual | Needs pages 2-4 |
-| 7 | Every number in or computed from the data package | Numbers computed in code from `data/`; trace box under each chart | All | manual | Page 1 pass |
-| 8 | App states an answer in text | Home "Our answer" | Yajat (+ team update) | auto | Pass; extend with pages 2-4 |
+| 6 | Each story walkable in the app | Home links each story to its pages | All | manual | Stories 1 and 2 pass; **story 3 fails until page 3 is built** |
+| 7 | Every number in or computed from the data package | Numbers computed in code from `data/`; trace box under each chart | All | manual | Home and pages 1, 2, 4 pass; page 3 to come |
+| 8 | App states an answer in text | Home "Our answer" | Yajat (+ team update) | auto | Pass; the answer cites pages 1, 2 and 4 |
 | 9 | App states what the data cannot show | Home "What this data cannot show" (`LIMITS` in `utils/story.py`) | All add their limits | auto | Pass |
-| 10 | Units, baselines, time coverage wherever numbers are compared | Chart captions and number-card captions | All | manual | Page 1 pass |
-| 11 | On-screen claims stay within the data | No causal claims or extrapolation beyond the files | All | manual | Page 1 pass |
-| 12 | Every chart has a title or caption saying what it shows | `####` title stating the finding plus `st.caption` | All | manual | Page 1 pass |
-| 13 | At least four charts | Page 1 has 3; each other page adds at least 1 | All | auto | **Fail until one teammate chart lands** |
-| 14 | At least three Visual Vocabulary families | See the family plan below | All | manual | Page 1 has 2 families |
-| 15 | Form matches task | Design log entry per chart | All | manual | Page 1 pass |
+| 10 | Units, baselines, time coverage wherever numbers are compared | Chart captions and number-card captions | All | manual | Pages 1, 2, 4 pass |
+| 11 | On-screen claims stay within the data | No causal claims or extrapolation beyond the files | All | manual | Pages 1, 2 pass; **page 4 cites two report claims that are not in the data package** |
+| 12 | Every chart has a title or caption saying what it shows | `####` title stating the finding plus `st.caption` | All | manual | Pages 1, 2, 4 pass |
+| 13 | At least four charts | Page 1 has 3; each other page adds at least 1 | All | auto | Pass (5 charts) |
+| 14 | At least three Visual Vocabulary families | See the family plan below | All | manual | Pass: change over time, part-to-whole, magnitude |
+| 15 | Form matches task | Design log entry per chart | All | manual | Pages 1, 2, 4 pass |
 | 16 | Every axis and legend labelled with units | `style(fig, x_title=, y_title=, legend_title=)` | All | auto | Pass |
 | 17 | Every value readable without hovering | Text labels on every point or bar | All | auto (warning) | Pass |
 | 18 | Colours survive a CVD check | Only `utils/theme.py` colours; validator passed (below) | All | auto | Pass |
-| 19 | Deployed URL loads in under 5 s | Light pages; app opened before marking | Yajat | manual | Check on 17 Nov |
+| 19 | Deployed URL loads in under 5 s | Light pages; app opened before marking | Yajat | manual | **At risk:** about 8 s on a first visit in a fresh browser (Streamlit Cloud's loader takes about 4.4 s before the app starts), about 3 s on a repeat visit |
 | 20 | Opens on something true about the whole dataset | Home "Across the whole dataset, in 2025" cards | Yajat | manual | Pass |
 | 21 | Two interactions change the view in about a second | Page 1: TWh/share toggle, region filter | All | auto | Pass |
 | 22 | Empty filter shows a message | Page 1 region filter; every multiselect needs one | All | auto | Pass |
-| 23 | Works at 1366x768, vertical scroll only | Checked in browser | All | manual | Page 1 pass |
+| 23 | Works at 1366x768, vertical scroll only | Checked in browser | All | manual | Pass on every page (Sources tables fixed 27 Oct) |
 | 24 | Sources and last refresh on screen | Footer on every page from the dictionary | Yajat | auto | Pass |
 | 25 | Data folder with samples and processed files | `data/samples/`, `data/processed/` | All | auto | Pass |
-| 26 | Data dictionary covers every dataset | `data/data_dictionary.yml` and generated `DATA_DICTIONARY.md` | All | auto | Pass |
-| 27 | Commit hash or tag resolves and the app runs | Tag `v1.0`; checker opens every page | Yajat | auto + manual | Tag on 17 Nov |
-| 28 | Provenance row from every member, verification that could fail | `docs/AI_PROVENANCE.md` | **Each member** | auto | **Fail until A, B, C add rows** |
+| 26 | Data dictionary covers every dataset | `data/data_dictionary.yml` and generated `DATA_DICTIONARY.md` | All | auto | **Fail until the four page 3 data files have entries** |
+| 27 | Commit hash or tag resolves and the app runs | Release tag; checker opens every page | Yajat | auto + manual | Tag `v1.1`; `main` matches it |
+| 28 | Provenance row from every member, verification that could fail | `docs/AI_PROVENANCE.md` | **Each member** | auto | **Fail until Siddharth and Niki add rows** |
 | 29 | Data and AI disclosure statement | `DISCLOSURE.md` | All add their AI section | auto | Pass |
 | 30 | Processed files regenerate from samples | `scripts/build_all.py`; checker rebuilds in a clean copy | All | auto | Pass |
 

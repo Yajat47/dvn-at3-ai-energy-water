@@ -2,10 +2,10 @@
 
 ## Data
 
-- **What we used.** Only public, citable sources, listed with their URLs, licences and retrieval dates in `data/DATA_DICTIONARY.md`: the International Energy Agency (*Key Questions on Energy and AI*, 2026), Our World in Data (data-centre share of electricity, based on IEA and Ember), and Ember electricity demand via Our World in Data. Page owners add their sources to the dictionary.
+- **What we used.** Only public, citable sources, listed with their URLs, licences and retrieval dates in `data/DATA_DICTIONARY.md`: the International Energy Agency (*Key Questions on Energy and AI*, 2026), Our World in Data (data-centre share of electricity, based on IEA and Ember), Ember electricity demand via Our World in Data, Google's *Environmental Report 2026* (water figures), and Epoch AI's *Notable AI Models* and *Machine Learning Hardware* datasets. Page owners add their sources to the dictionary.
 - **How we used it.** Source files are stored unchanged in `data/samples/`. Numbers taken from report text are typed into `data/samples/manual/` with the original sentence beside each one. Every processed file in `data/processed/` is produced by a script in `scripts/`, and `python scripts/build_all.py` regenerates all of them from the samples.
-- **Licences.** Our World in Data and Ember data are CC BY 4.0. IEA figures are quoted with attribution under the IEA's terms of use. We redistribute only what those terms allow.
-- **Personal data.** None. All data is aggregated at country, region or company level.
+- **Licences.** Our World in Data, Ember and Epoch AI data are CC BY 4.0. IEA and Google figures are quoted with attribution from their reports. We redistribute only what those terms allow.
+- **Personal data.** None used. Figures are at country, region, company or model level. The Epoch AI models file, stored as published, includes the public author lists of research papers; the app neither uses nor shows them.
 - **Limits.** What the data cannot show is stated on the app's Home page, for example that most data-centre electricity figures are IEA model estimates rather than measurements.
 
 ## AI
@@ -25,6 +25,7 @@ Every substantive AI use is a row in the AI provenance matrix, `docs/AI_PROVENAN
 - **Documentation.** README, this statement's structure, `docs/design-log.md`, `docs/research-brief.md`, `docs/PART2_CHECKLIST.md`.
 - **Story.** It suggested the wording of the group question and the persona. I had the persona renamed.
 - **My Part 1 recording.** A rehearsal script, a transcript of my recording, and trimming the recording to under five minutes.
+- **Integration and submission.** Merging teammates' branches, extending the Home answer with the evidence from pages 2 and 4, rewriting the Sources page tables to fit 1366x768, and the one-page submission PDF, built by a script from the release tag.
 
 Commits made with Claude are marked `Co-Authored-By: Claude` in the git history.
 
