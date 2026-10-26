@@ -1,0 +1,6 @@
+metric,year,value,unit,kind,source_id,quote
+water_consumption_total,2025,10.9,billion_gallons,actual,GOOGLE-2026-ENV,"we consumed 10.9 billion gallons (41 billion liters or 41 million cubic meters)"
+water_consumption_growth,2025,34,%,actual,GOOGLE-2026-ENV,"Our water consumption increased 34% from 2024 to 2025"
+water_consumption_the_dalles,2025,0.469,billion_gallons,actual,GOOGLE-2026-ENV,"we consumed 469 million gallons of water in The Dalles in 2025"
+water_replenished_total,2025,7.7,billion_gallons,actual,GOOGLE-2026-ENV,"replenished approximately 7.7 billion gallons of water"
+water_replenished_share_of_freshwater,2025,78,%,actual,GOOGLE-2026-ENV,"roughly 78% of our 2025 freshwater consumption"

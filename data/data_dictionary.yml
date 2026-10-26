@@ -32,6 +32,14 @@ sources:
     retrieved: '2026-10-20'
     cadence: Annual (last updated 2026-06-30, next 2027-06-30)
     owner: Yajat
+  - id: GOOGLE-2026-ENV
+    title: Environmental Report 2026
+    publisher: Google
+    url: https://sustainability.google/files/google-2026-environmental-report.pdf
+    licence: Company report (figures quoted with attribution)
+    retrieved: '2026-10-26'
+    cadence: Annual
+    owner: Akil
 
 datasets:
   # ---------------------------------------------------------------- source samples
@@ -94,6 +102,27 @@ datasets:
       quote: {type: string, unit: 'none', description: "The report sentence, word for word"}
     transform: Typed in by hand from the report web page; the quote column holds each sentence word for word.
     owner: Yajat
+
+  - id: google_2026_water_numbers
+    role: sample
+    path: data/samples/manual/google_2026_water.csv
+    format: csv
+    source_ids: [GOOGLE-2026-ENV]
+    description: Water figures copied from the Google 2026 Environmental Report (water stewardship section), each with the phrase it came from.
+    primary_key: [metric, year]
+    time_column: year
+    time_coverage: 2025 (the report gives one-year figures and a 2024 to 2025 growth rate)
+    latest_observation: 2025
+    columns:
+      metric: {type: string, unit: 'none', description: "What the number measures"}
+      year: {type: integer, unit: 'year', description: "Year the number refers to"}
+      value: {type: number, unit: 'see unit column', description: "The number as printed in the report"}
+      unit: {type: string, unit: 'none', description: "Unit of value (billion_gallons or %)"}
+      kind: {type: string, unit: 'none', description: "actual: reported by the company"}
+      source_id: {type: string, unit: 'none', description: "Source id in this dictionary"}
+      quote: {type: string, unit: 'none', description: "Words from the report, word for word"}
+    transform: Typed in by hand from the report PDF; the quote column holds the report's own words for each number.
+    owner: Akil
 
   # ---------------------------------------------------------------- processed files the app reads
   - id: global_dc_electricity
@@ -172,3 +201,28 @@ datasets:
         - Take Australia, United Kingdom, France and Germany 2025 demand from the Ember file.
         - ratio_dc_to_country = World 2025 data-centre TWh / country demand TWh.
     owner: Yajat
+
+  - id: water_google
+    role: processed
+    path: data/processed/water_google.csv
+    format: csv
+    source_ids: [GOOGLE-2026-ENV]
+    description: Google's reported 2025 water figures with plain-English labels, read by the Water page.
+    primary_key: [metric, year]
+    time_column: year
+    time_coverage: 2025
+    latest_observation: 2025
+    columns:
+      metric: {type: string, unit: 'none', description: "Machine name of the measure"}
+      label: {type: string, unit: 'none', description: "Plain-English name of the measure"}
+      year: {type: integer, unit: 'year', description: "Year the number refers to"}
+      value: {type: number, unit: 'see unit column', description: "The reported number, unchanged"}
+      unit: {type: string, unit: 'none', description: "Unit of value (billion_gallons or %)"}
+    transform:
+      script: scripts/build_water.py
+      inputs: [google_2026_water_numbers]
+      steps:
+        - Read the five reported numbers from the manual file.
+        - Add a plain-English label to each. No value is changed.
+        - The page computes The Dalles share = The Dalles gallons / total gallons x 100.
+    owner: Akil

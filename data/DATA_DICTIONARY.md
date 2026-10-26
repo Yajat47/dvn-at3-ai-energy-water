@@ -9,6 +9,7 @@ Generated from `data/data_dictionary.yml` by `scripts/build_all.py`. Edit the YA
 | `IEA-2026-KQ` | Key Questions on Energy and AI (executive summary) | International Energy Agency | https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary | IEA terms of use (figures quoted with attribution) | 2026-10-20 |
 | `OWID-DC-SHARE` | Share of total electricity demand used by data centers | Our World in Data, based on IEA (2025, 2026) and Ember (2026) | https://ourworldindata.org/grapher/data-centers-share-electricity-demand | CC BY 4.0 (Our World in Data processing); underlying IEA data under IEA terms | 2026-10-20 |
 | `OWID-EMBER-DEMAND` | Electricity demand | Our World in Data, based on Ember (2026) | https://ourworldindata.org/grapher/electricity-demand | CC BY 4.0 | 2026-10-20 |
+| `GOOGLE-2026-ENV` | Environmental Report 2026 | Google | https://sustainability.google/files/google-2026-environmental-report.pdf | Company report (figures quoted with attribution) | 2026-10-26 |
 
 ## Source samples
 
@@ -76,6 +77,29 @@ Headline numbers copied from the IEA report text, each with the sentence it came
 | `kind` | string | none | actual or projection |
 | `source_id` | string | none | Source id in this dictionary |
 | `quote` | string | none | The report sentence, word for word |
+
+### `data/samples/manual/google_2026_water.csv`
+
+Water figures copied from the Google 2026 Environmental Report (water stewardship section), each with the phrase it came from.
+
+- **Dataset ID:** `google_2026_water_numbers` (owner: Akil)
+- **Source:** Google, *Environmental Report 2026*
+- **URL:** https://sustainability.google/files/google-2026-environmental-report.pdf
+- **Licence:** Company report (figures quoted with attribution)
+- **Primary key:** `metric`, `year`
+- **Time coverage:** 2025 (the report gives one-year figures and a 2024 to 2025 growth rate)
+- **Latest observation:** 2025
+- **Transform:** Typed in by hand from the report PDF; the quote column holds the report's own words for each number.
+
+| Column | Type | Unit | Description |
+|---|---|---|---|
+| `metric` | string | none | What the number measures |
+| `year` | integer | year | Year the number refers to |
+| `value` | number | see unit column | The number as printed in the report |
+| `unit` | string | none | Unit of value (billion_gallons or %) |
+| `kind` | string | none | actual: reported by the company |
+| `source_id` | string | none | Source id in this dictionary |
+| `quote` | string | none | Words from the report, word for word |
 
 ## Processed files the app reads
 
@@ -151,3 +175,27 @@ World data-centre electricity in 2025 next to whole countries' electricity deman
 | `demand_twh` | number | TWh | The country's total electricity demand |
 | `world_dc_twh` | number | TWh | World data-centre electricity use |
 | `ratio_dc_to_country` | number | ratio | world_dc_twh / demand_twh |
+
+### `data/processed/water_google.csv`
+
+Google's reported 2025 water figures with plain-English labels, read by the Water page.
+
+- **Dataset ID:** `water_google` (owner: Akil)
+- **Source:** Google, *Environmental Report 2026*
+- **URL:** https://sustainability.google/files/google-2026-environmental-report.pdf
+- **Licence:** Company report (figures quoted with attribution)
+- **Primary key:** `metric`, `year`
+- **Time coverage:** 2025
+- **Latest observation:** 2025
+- **Transform:** `scripts/build_water.py` from `google_2026_water_numbers`
+  1. Read the five reported numbers from the manual file.
+  2. Add a plain-English label to each. No value is changed.
+  3. The page computes The Dalles share = The Dalles gallons / total gallons x 100.
+
+| Column | Type | Unit | Description |
+|---|---|---|---|
+| `metric` | string | none | Machine name of the measure |
+| `label` | string | none | Plain-English name of the measure |
+| `year` | integer | year | Year the number refers to |
+| `value` | number | see unit column | The reported number, unchanged |
+| `unit` | string | none | Unit of value (billion_gallons or %) |
