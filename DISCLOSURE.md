@@ -47,7 +47,7 @@ _To be added by Member A._
 
 _To be added by Member B._
 
-### Member C (Akil Venkateshkumar): 4. Water
+### Member C (Akil): 4. Water
 
 **Tool:** Claude (Anthropic), used through the Claude chat app, October 2026.
 
@@ -55,10 +55,10 @@ _To be added by Member B._
 
 - **Code for my page.** The Water page (`views/water.py`), its build script (`scripts/build_water.py`) and the manual data file (`data/samples/manual/google_2026_water.csv`).
 - **Extracting figures.** It read the Google 2026 Environmental Report PDF and pulled out the water numbers.
-- **Explaining the project.** It helped me understand the assignment and run the app.
+- **Documentation.** My data dictionary entries, provenance row and design-log entry.
 
 **How I checked it**
 
-1. I opened the Google 2026 Environmental Report PDF and confirmed each number in the manual file against its page.
-2. I recalculated the Dalles share by hand: 0.469 / 10.9 x 100 = 4.3%.
-3. I ran `python scripts/build_water.py` and `python scripts/check_package.py`, and fixed anything flagged.
+1. I opened the report PDF and checked each number in the manual file against its page.
+2. I recalculated The Dalles share by hand: 0.469 / 10.9 x 100 = 4.3%.
+3. I ran `python scripts/build_all.py` and `python scripts/check_package.py` and fixed anything flagged.
