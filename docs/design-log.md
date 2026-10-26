@@ -36,10 +36,10 @@ One entry per person: the chart you own, the visual task, the form you chose, th
 
 ---
 
-## Member C: 4. Water
+## Member C (Akil): 4. Water
 
-- **Chart:**
-- **Visual task:**
-- **Form chosen:**
-- **Alternative rejected:**
-- **Why it lost:**
+- **Chart:** Google's reported 2025 water use: total consumed, replenished, and The Dalles (`views/water.py`)
+- **Visual task:** Compare three quantities of very different size, to show how much of the total lands in one local water system.
+- **Form chosen:** Labelled bar chart in one unit (billion US gallons), one axis, with a finding-style title.
+- **Alternative rejected:** A pie chart of The Dalles against the rest.
+- **Why it lost:** A pie shows The Dalles as a thin sliver, cannot include the replenished figure (a different quantity, not a part of the total), and asks readers to compare angles instead of lengths.
