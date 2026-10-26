@@ -1,0 +1,6 @@
+metric,label,year,value,unit
+water_consumption_total,Google total consumption (data centres and offices),2025,10.9,billion_gallons
+water_consumption_growth,"Growth in consumption, 2024 to 2025",2025,34.0,%
+water_consumption_the_dalles,"The Dalles, Oregon site consumption",2025,0.469,billion_gallons
+water_replenished_total,Water replenished by stewardship projects,2025,7.7,billion_gallons
+water_replenished_share_of_freshwater,"Replenished, as reported, share of freshwater consumption",2025,78.0,%
