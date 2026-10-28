@@ -171,12 +171,21 @@ trace(
         f"Compute growth a year {full_c['total_multiple']:.3g} ^ (1/{last_year - first_year}) = {full_c['growth_per_year']:.2f}"
     ),
     exact_rows=[
-        (f"{m_end['Model']} training compute", RAW_MODELS, f"{m_end['Model']},"),
-        (f"{m_start['Model']} training compute", RAW_MODELS, f"{m_start['Model']},"),
         (f"{h_end['Hardware name']} FP32 and TDP", RAW_HW, f"{h_end['Hardware name']},"),
         (f"{h_start['Hardware name']} FP32 and TDP", RAW_HW, f"{h_start['Hardware name']},"),
     ],
-    tables={"Processed rows used in this chart": df, "Growth summary": summary.reset_index()},
+    tables={
+        "Raw rows: the two model records, read live from data/samples/epoch_notable_ai_models.csv":
+            models_raw.loc[[m_end["Model"], m_start["Model"]],
+                           ["Model", "Organization", "Publication date", "Training compute (FLOP)"]]
+            .assign(**{"Training compute (FLOP)": lambda t: t["Training compute (FLOP)"].map("{:.4g}".format)}),
+        "Raw rows: the two chip records, read live from data/samples/epoch_ml_hardware.csv":
+            hw_raw.loc[[h_end["Hardware name"], h_start["Hardware name"]],
+                       ["Hardware name", "Manufacturer", "Release date", FP32, "TDP (W)"]]
+            .assign(**{FP32: lambda t: t[FP32].map("{:.4g}".format)}),
+        "Processed rows used in this chart": df,
+        "Growth summary": summary.reset_index(),
+    },
 )
 
 # ---------------------------------------------------------------- chart 2: doubling time
