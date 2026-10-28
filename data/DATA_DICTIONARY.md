@@ -10,6 +10,8 @@ Generated from `data/data_dictionary.yml` by `scripts/build_all.py`. Edit the YA
 | `OWID-DC-SHARE` | Share of total electricity demand used by data centers | Our World in Data, based on IEA (2025, 2026) and Ember (2026) | https://ourworldindata.org/grapher/data-centers-share-electricity-demand | CC BY 4.0 (Our World in Data processing); underlying IEA data under IEA terms | 2026-10-20 |
 | `OWID-EMBER-DEMAND` | Electricity demand | Our World in Data, based on Ember (2026) | https://ourworldindata.org/grapher/electricity-demand | CC BY 4.0 | 2026-10-20 |
 | `GOOGLE-2026-ENV` | Environmental Report 2026 | Google | https://sustainability.google/files/google-2026-environmental-report.pdf | Company report (figures quoted with attribution) | 2026-10-26 |
+| `EPOCH-MODELS` | Notable AI Models | Epoch AI | https://epoch.ai/data/notable-ai-models | CC BY 4.0 | 2026-10-21 |
+| `EPOCH-HARDWARE` | Machine Learning Hardware | Epoch AI | https://epoch.ai/data/machine-learning-hardware | CC BY 4.0 | 2026-10-21 |
 
 ## Source samples
 
@@ -100,6 +102,125 @@ Water figures copied from the Google 2026 Environmental Report (water stewardshi
 | `kind` | string | none | actual: reported by the company |
 | `source_id` | string | none | Source id in this dictionary |
 | `quote` | string | none | Words from the report, word for word |
+
+### `data/samples/epoch_notable_ai_models.csv`
+
+Epoch AI's list of notable AI models with training compute, parameters and publication date.
+
+- **Dataset ID:** `epoch_notable_ai_models` (owner: Niki)
+- **Source:** Epoch AI, *Notable AI Models*
+- **URL:** https://epoch.ai/data/notable-ai-models
+- **Licence:** CC BY 4.0
+- **Primary key:** `Model`
+- **Time coverage:** 1950-2026 (models published up to the retrieval date)
+- **Latest observation:** 2026-09-30
+- **Transform:** Downloaded unchanged from https://epoch.ai/data/notable_ai_models.csv by scripts/fetch_sources.py.
+
+| Column | Type | Unit | Description |
+|---|---|---|---|
+| `Model` | string | none | Model name as published by Epoch AI |
+| `Organization` | string | none | Developer organisation(s) |
+| `Publication date` | date | date | Date the model was published (YYYY-MM-DD) |
+| `Domain` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Task` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Parameters` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Parameters notes` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Training compute (FLOP)` | number | FLOP | Total floating-point operations used to train the model; used by build_compute.py |
+| `Training compute notes` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Training dataset` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Training dataset size (total)` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Dataset size notes` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Confidence` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Link` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Reference` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Citations` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Authors` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Abstract` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Organization categorization` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Country (of organization)` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Notability criteria` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Notability criteria notes` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Epochs` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Training time (hours)` | number | hours | Epoch AI field, kept exactly as published; not used by this app |
+| `Training time notes` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Training hardware` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Hardware quantity` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Hardware utilization (MFU)` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Training compute cost (2023 USD)` | number | 2023 USD | Epoch AI field, kept exactly as published; not used by this app |
+| `Compute cost notes` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Training power draw (W)` | number | W | Epoch AI field, kept exactly as published; not used by this app |
+| `Base model` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Finetune compute (FLOP)` | number | FLOP | Epoch AI field, kept exactly as published; not used by this app |
+| `Finetune compute notes` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Batch size` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Batch size notes` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Model accessibility` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Training code accessibility` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Inference code accessibility` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Accessibility notes` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Numerical format` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Frontier model` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Hardware acquisition cost` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Hardware utilization (HFU)` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Training compute cost (cloud)` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Training compute cost (upfront)` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Open model weights?` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+
+### `data/samples/epoch_ml_hardware.csv`
+
+Epoch AI's list of machine-learning chips with performance at each precision, power (TDP) and release date.
+
+- **Dataset ID:** `epoch_ml_hardware` (owner: Niki)
+- **Source:** Epoch AI, *Machine Learning Hardware*
+- **URL:** https://epoch.ai/data/machine-learning-hardware
+- **Licence:** CC BY 4.0
+- **Primary key:** `Hardware name`
+- **Time coverage:** 2008-2026 (chips released up to the retrieval date)
+- **Latest observation:** 2026-09-30
+- **Transform:** Downloaded unchanged from https://epoch.ai/data/ml_hardware.csv by scripts/fetch_sources.py.
+
+| Column | Type | Unit | Description |
+|---|---|---|---|
+| `Hardware name` | string | none | Chip name as published by Epoch AI |
+| `Manufacturer` | string | none | Chip manufacturer |
+| `Type` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Notes` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Release date` | date | date | Date the chip was released (YYYY-MM-DD) |
+| `Release price (USD)` | number | USD | Epoch AI field, kept exactly as published; not used by this app |
+| `Tensor-FP16/BF16 performance (FLOP/s)` | number | FLOP/s | Epoch AI field, kept exactly as published; not used by this app |
+| `FP8 performance (FLOP/s)` | number | FLOP/s | Epoch AI field, kept exactly as published; not used by this app |
+| `FP4 performance (FLOP/s)` | number | FLOP/s | Epoch AI field, kept exactly as published; not used by this app |
+| `Memory (bytes)` | number | bytes | Epoch AI field, kept exactly as published; not used by this app |
+| `Memory bandwidth (byte/s)` | number | byte/s | Epoch AI field, kept exactly as published; not used by this app |
+| `Intranode bandwidth (byte/s)` | number | byte/s | Epoch AI field, kept exactly as published; not used by this app |
+| `Internode bandwidth (bit/s)` | number | bit/s | Epoch AI field, kept exactly as published; not used by this app |
+| `TDP (W)` | number | W | Thermal design power, the rated power draw in watts; used by build_compute.py |
+| `FP64 (double precision) performance (FLOP/s)` | number | FLOP/s | Epoch AI field, kept exactly as published; not used by this app |
+| `FP32 (single precision) performance (FLOP/s)` | number | FLOP/s | Peak FP32 operations per second; used by build_compute.py |
+| `TF32 (TensorFloat-32) performance (FLOP/s)` | number | FLOP/s | Epoch AI field, kept exactly as published; not used by this app |
+| `FP16 (half precision) performance (FLOP/s)` | number | FLOP/s | Epoch AI field, kept exactly as published; not used by this app |
+| `INT16 performance (OP/s)` | number | OP/s | Epoch AI field, kept exactly as published; not used by this app |
+| `INT8 performance (OP/s)` | number | OP/s | Epoch AI field, kept exactly as published; not used by this app |
+| `INT4 performance (OP/s)` | number | OP/s | Epoch AI field, kept exactly as published; not used by this app |
+| `Foundry` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Die Size (mm^2)` | number | mm^2 | Epoch AI field, kept exactly as published; not used by this app |
+| `Base clock (MHz)` | number | MHz | Epoch AI field, kept exactly as published; not used by this app |
+| `Boost clock (MHz)` | number | MHz | Epoch AI field, kept exactly as published; not used by this app |
+| `Memory clock (MHz)` | number | MHz | Epoch AI field, kept exactly as published; not used by this app |
+| `Memory bus (bit)` | number | bit | Epoch AI field, kept exactly as published; not used by this app |
+| `Tensor cores` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Process size (nm)` | number | nm | Epoch AI field, kept exactly as published; not used by this app |
+| `Transistors (millions)` | number | millions | Epoch AI field, kept exactly as published; not used by this app |
+| `Link to datasheet` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Source for the price` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `ML models` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Last modified` | string | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Max performance` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Energy efficiency` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Total processing performance (bit-OP/s)` | number | bit-OP/s | Epoch AI field, kept exactly as published; not used by this app |
+| `Price-performance` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `ML OP/s` | number | none | Epoch AI field, kept exactly as published; not used by this app |
+| `Inference Capacity Index (GB300e)` | number | none | Epoch AI field, kept exactly as published; not used by this app |
 
 ## Processed files the app reads
 
@@ -199,3 +320,58 @@ Google's reported 2025 water figures with plain-English labels, read by the Wate
 | `year` | integer | year | Year the number refers to |
 | `value` | number | see unit column | The reported number, unchanged |
 | `unit` | string | none | Unit of value (billion_gallons or %) |
+
+### `data/processed/compute_vs_efficiency.csv`
+
+Record-to-date training compute of the largest AI model and FP32 efficiency of the best chip, by year, each indexed to 2012 = 1.
+
+- **Dataset ID:** `compute_vs_efficiency` (owner: Niki)
+- **Source:** Epoch AI, *Notable AI Models*; Epoch AI, *Machine Learning Hardware*
+- **URL:** https://epoch.ai/data/notable-ai-models; https://epoch.ai/data/machine-learning-hardware
+- **Licence:** CC BY 4.0; CC BY 4.0
+- **Primary key:** `series`, `year`
+- **Time coverage:** 2012-2025
+- **Latest observation:** 2025
+- **Transform:** `scripts/build_compute.py` from `epoch_notable_ai_models`, `epoch_ml_hardware`
+  1. Models: keep rows with a publication date and a positive Training compute (FLOP).
+  2. Chips: keep rows with a release date, FP32 performance and TDP; efficiency = FP32 FLOP/s / TDP W.
+  3. For each year keep the best value released up to and including that year, so neither series falls.
+  4. Index each series to its 2012 value = 1.
+  5. Stop if a record falls or either series fails to grow.
+
+| Column | Type | Unit | Description |
+|---|---|---|---|
+| `year` | integer | year | Calendar year |
+| `series` | string | none | Training compute of the largest model, or Efficiency of the best chip (FP32) |
+| `value` | number | see unit column | Record value released up to and including this year |
+| `unit` | string | none | Unit of value (FLOP or FLOP/s per W) |
+| `record_holder` | string | none | Model or chip that holds the record |
+| `record_organization` | string | none | Developer or manufacturer of the record holder |
+| `record_year` | integer | year | Year the record holder was released |
+| `index_2012` | number | index (2012 = 1) | value divided by the series' 2012 value |
+
+### `data/processed/compute_growth_summary.csv`
+
+Total multiple, average yearly growth and doubling time of each series in compute_vs_efficiency, 2012 to 2025.
+
+- **Dataset ID:** `compute_growth_summary` (owner: Niki)
+- **Source:** Epoch AI, *Notable AI Models*; Epoch AI, *Machine Learning Hardware*
+- **URL:** https://epoch.ai/data/notable-ai-models; https://epoch.ai/data/machine-learning-hardware
+- **Licence:** CC BY 4.0; CC BY 4.0
+- **Primary key:** `series`
+- **Time coverage:** 2012-2025
+- **Latest observation:** 2025
+- **Transform:** `scripts/build_compute.py` from `compute_vs_efficiency`
+  1. growth_per_year = (end_value / start_value) ^ (1 / (end_year - start_year)).
+  2. doubling_time_months = 12 x ln 2 / ln(growth_per_year).
+
+| Column | Type | Unit | Description |
+|---|---|---|---|
+| `series` | string | none | Series name, as in compute_vs_efficiency |
+| `start_year` | integer | year | First year of the comparison |
+| `end_year` | integer | year | Last year of the comparison |
+| `start_value` | number | FLOP or FLOP/s per W | Record value in start_year |
+| `end_value` | number | FLOP or FLOP/s per W | Record value in end_year |
+| `total_multiple` | number | times | end_value / start_value |
+| `growth_per_year` | number | times per year | total_multiple ^ (1 / years) |
+| `doubling_time_months` | number | months | 12 x ln 2 / ln(growth_per_year) |
