@@ -12,7 +12,7 @@ from utils.story import PERSONA, TEAM
 from utils.theme import INK, PLOTLY_CONFIG, SERIES, SURFACE, style
 from utils.trace import trace
 
-KEY = "where"  # TODO: your key in TEAM / STATUS (where, compute, water)
+KEY = "where"  # TODO: your key in TEAM (where, compute, water)
 NEED = 1  # TODO: index of the persona question you answer (1, 2 or 3)
 
 # TODO: produce this file with scripts/build_<page>.py from your files in data/samples/,

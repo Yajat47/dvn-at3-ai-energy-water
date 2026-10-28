@@ -34,14 +34,6 @@ TEAM = {
     "sources": "Yajat",
 }
 
-# Owners update their own line when their page moves on.
-STATUS = {
-    "global": "Draft ready",
-    "where": "In progress",
-    "compute": "Draft ready",
-    "water": "In progress",
-}
-
 # The three user stories (README lists the same three). Each must be walkable in the app.
 USER_STORIES = [
     {

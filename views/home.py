@@ -3,7 +3,7 @@
 import streamlit as st
 
 from utils import data
-from utils.story import LIMITS, PERSONA, QUESTION, STATUS, TEAM, USER_STORIES, WHY_ARGUABLE
+from utils.story import LIMITS, PERSONA, QUESTION, TEAM, USER_STORIES, WHY_ARGUABLE
 from utils.trace import trace
 
 g = data.processed("global_dc_electricity")
@@ -26,6 +26,10 @@ water_growth = water.loc["water_consumption_growth", "value"]
 dalles = water.loc["water_consumption_the_dalles", "value"]
 dalles_share = dalles / water_total * 100
 
+growth = data.processed("compute_growth_summary").set_index("series")
+compute = growth.loc["Training compute of the largest model"]
+chips = growth.loc["Efficiency of the best chip (FP32)"]
+
 # ---------------------------------------------------------------- opening screen
 st.title("AI's energy and water footprint")
 st.markdown(f"### Our question: {QUESTION}")
@@ -45,7 +49,8 @@ st.markdown(WHY_ARGUABLE)
 st.markdown("## Our answer")
 st.markdown(
     "**More a local problem than a global one.** Measured against the world, data centres are a small load. "
-    "But the load is concentrated, in electricity and in water:"
+    "But the load is concentrated, in electricity and in water, and chip efficiency is not keeping pace with "
+    "AI compute:"
 )
 st.markdown(
     f"- **Global scale (page 1).** Data centres used {w25['dc_share_pct']:.1f}% of the world's electricity in 2025, "
@@ -53,6 +58,9 @@ st.markdown(
     f"{us_cn_pct:.0f}% of that data-centre electricity.\n"
     f"- **Where it lands (page 2).** In the United States, data centres took {us25['dc_share_pct']:.1f}% of all "
     f"electricity in 2025, {us_vs_world:.1f} times the world share.\n"
+    f"- **Compute vs efficiency (page 3).** From {compute['start_year']:.0f} to {compute['end_year']:.0f}, the training "
+    f"compute of the largest AI model grew about {compute['total_multiple'] / 1e6:.0f} million times; the most "
+    f"efficient chip improved about {chips['total_multiple']:.1f} times.\n"
     f"- **Water (page 4).** Google reports consuming {water_total:.1f} billion gallons of water in {water_year}, up "
     f"{water_growth:.0f}% on {water_year - 1}. One site area, The Dalles in Oregon, accounted for "
     f"{dalles_share:.0f}% of it."
@@ -89,23 +97,30 @@ cards = [
 ]
 for col, (title, key, page) in zip(st.columns(4), cards):
     with col.container(border=True):
-        st.markdown(f"**{title}**  \n{TEAM[key]} · _{STATUS[key]}_")
+        st.markdown(f"**{title}**  \n{TEAM[key]}")
         st.page_link(page, label="Open", icon=":material/arrow_forward:")
 
 # ---------------------------------------------------------------- limits
 st.markdown("## What this data cannot show")
 st.markdown("\n".join(f"- {limit}" for limit in LIMITS))
 
+# Only the columns the answer uses, with the FLOP values in scientific notation, so the table fits at 1366 wide.
+growth_rows = growth.reset_index()[["series", "start_year", "end_year", "start_value", "end_value", "total_multiple"]]
+growth_rows[["start_value", "end_value"]] = growth_rows[["start_value", "end_value"]].map("{:.4g}".format)
+
 trace(
-    sources=["OWID-DC-SHARE", "OWID-EMBER-DEMAND", "IEA-2026-KQ", "GOOGLE-2026-ENV"],
+    sources=["OWID-DC-SHARE", "OWID-EMBER-DEMAND", "IEA-2026-KQ", "EPOCH-MODELS", "EPOCH-HARDWARE",
+             "GOOGLE-2026-ENV"],
     files=["data/processed/global_dc_electricity.csv", "data/processed/global_comparisons.csv",
-           "data/processed/water_google.csv"],
+           "data/processed/compute_growth_summary.csv", "data/processed/water_google.csv"],
     steps=[
         "Opening figures and the electricity points in the answer use the 2025 rows of global_dc_electricity "
         "(World, United States, China).",
         "US and China share of world data-centre electricity = (US TWh + China TWh) / World TWh, 2025.",
         "US share vs world share = US data-centre share / world data-centre share, 2025.",
         "2030 share is the IEA 2026 base-case projection.",
+        "Compute and chip multiples are total_multiple in compute_growth_summary (last record / first record), "
+        "the same figures page 3 opens with.",
         "Water figures are Google's reported numbers in water_google, unchanged. "
         "The Dalles share = The Dalles gallons / total gallons x 100.",
     ],
@@ -113,7 +128,12 @@ trace(
         f"US + China, 2025:   {us_cn:.0f} TWh / {w25['dc_twh']:.0f} TWh = {us_cn_pct:.1f}%\n"
         f"US vs world share:  {us25['dc_share_pct']:.2f}% / {w25['dc_share_pct']:.2f}% = {us_vs_world:.2f}x\n"
         f"World growth:       {w25['dc_twh']:.0f} / {w24['dc_twh']:.0f} - 1 = {yoy:.1f}%\n"
+        f"Training compute:   {compute['end_value']:.3g} / {compute['start_value']:.3g} FLOP = "
+        f"{compute['total_multiple'] / 1e6:.0f} million times\n"
+        f"Chip efficiency:    {chips['end_value']:.3g} / {chips['start_value']:.3g} FLOP/s per W = "
+        f"{chips['total_multiple']:.3g} times\n"
         f"The Dalles share:   {dalles:.3f} / {water_total:.1f} billion gallons x 100 = {dalles_share:.1f}%"
     ),
-    tables={"2025 rows used": actual[actual["year"] == 2025], "Water rows used": water.reset_index()},
+    tables={"2025 rows used": actual[actual["year"] == 2025], "Compute growth rows used": growth_rows,
+            "Water rows used": water.reset_index()},
 )
