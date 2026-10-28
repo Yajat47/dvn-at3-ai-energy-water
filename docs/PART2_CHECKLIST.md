@@ -1,6 +1,6 @@
 # Part 2 checklist (due Fri 20 Nov 2026, 11:59pm)
 
-Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests the ones marked **auto**; the rest need a person. "Status" is as of 27 Oct 2026 (release `v1.1`).
+Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests the ones marked **auto**; the rest need a person. "Status" is as of 28 Oct 2026 (release `v1.2`, the submitted version).
 
 ## Timeline
 
@@ -23,16 +23,16 @@ Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests 
 | 3 | Question is arguable | 1.5% of world electricity vs much higher local shares; stated on Home | All | manual | Pass |
 | 4 | README names persona and the decision | `**Persona:**` with "Decision the app serves" | Yajat | auto | Pass |
 | 5 | Three as-a / I-want / so-that stories | README "User stories" | Yajat | auto | Pass |
-| 6 | Each story walkable in the app | Home links each story to its pages | All | manual | Stories 1 and 2 pass; **story 3 fails until page 3 is built** |
-| 7 | Every number in or computed from the data package | Numbers computed in code from `data/`; trace box under each chart | All | manual | Home and pages 1, 2, 4 pass; page 3 to come |
-| 8 | App states an answer in text | Home "Our answer" | Yajat (+ team update) | auto | Pass; the answer cites pages 1, 2 and 4 |
+| 6 | Each story walkable in the app | Home links each story to its pages | All | manual | Pass: each story's pages are linked from Home |
+| 7 | Every number in or computed from the data package | Numbers computed in code from `data/`; trace box under each chart | All | manual | Pass on every page |
+| 8 | App states an answer in text | Home "Our answer" | Yajat (+ team update) | auto | Pass; the answer cites pages 1 to 4 |
 | 9 | App states what the data cannot show | Home "What this data cannot show" (`LIMITS` in `utils/story.py`) | All add their limits | auto | Pass |
-| 10 | Units, baselines, time coverage wherever numbers are compared | Chart captions and number-card captions | All | manual | Pages 1, 2, 4 pass |
+| 10 | Units, baselines, time coverage wherever numbers are compared | Chart captions and number-card captions | All | manual | Pass on every page |
 | 11 | On-screen claims stay within the data | No causal claims or extrapolation beyond the files | All | manual | Pages 1, 2 pass; **page 4 cites two report claims that are not in the data package** |
-| 12 | Every chart has a title or caption saying what it shows | `####` title stating the finding plus `st.caption` | All | manual | Pages 1, 2, 4 pass |
-| 13 | At least four charts | Page 1 has 3; each other page adds at least 1 | All | auto | Pass (5 charts) |
+| 12 | Every chart has a title or caption saying what it shows | `####` title stating the finding plus `st.caption` | All | manual | Pass on every page |
+| 13 | At least four charts | Page 1 has 3; each other page adds at least 1 | All | auto | Pass (7 charts) |
 | 14 | At least three Visual Vocabulary families | See the family plan below | All | manual | Pass: change over time, part-to-whole, magnitude |
-| 15 | Form matches task | Design log entry per chart | All | manual | Pages 1, 2, 4 pass |
+| 15 | Form matches task | Design log entry per chart | All | manual | Pass on every page; Siddharth's design-log entry is not written |
 | 16 | Every axis and legend labelled with units | `style(fig, x_title=, y_title=, legend_title=)` | All | auto | Pass |
 | 17 | Every value readable without hovering | Text labels on every point or bar | All | auto (warning) | Pass |
 | 18 | Colours survive a CVD check | Only `utils/theme.py` colours; validator passed (below) | All | auto | Pass |
@@ -40,27 +40,28 @@ Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests 
 | 20 | Opens on something true about the whole dataset | Home "Across the whole dataset, in 2025" cards | Yajat | manual | Pass |
 | 21 | Two interactions change the view in about a second | Page 1: TWh/share toggle, region filter | All | auto | Pass |
 | 22 | Empty filter shows a message | Page 1 region filter; every multiselect needs one | All | auto | Pass |
-| 23 | Works at 1366x768, vertical scroll only | Checked in browser | All | manual | Pass on every page (Sources tables fixed 27 Oct) |
+| 23 | Works at 1366x768, vertical scroll only | Checked in browser | All | manual | Pass on every page (page 3 and Home rechecked 28 Oct) |
 | 24 | Sources and last refresh on screen | Footer on every page from the dictionary | Yajat | auto | Pass |
 | 25 | Data folder with samples and processed files | `data/samples/`, `data/processed/` | All | auto | Pass |
-| 26 | Data dictionary covers every dataset | `data/data_dictionary.yml` and generated `DATA_DICTIONARY.md` | All | auto | **Fail until the four page 3 data files have entries** |
-| 27 | Commit hash or tag resolves and the app runs | Release tag; checker opens every page | Yajat | auto + manual | Tag `v1.1`; `main` matches it |
-| 28 | Provenance row from every member, verification that could fail | `docs/AI_PROVENANCE.md` | **Each member** | auto | **Fail until Siddharth and Niki add rows** |
-| 29 | Data and AI disclosure statement | `DISCLOSURE.md` | All add their AI section | auto | Pass |
+| 26 | Data dictionary covers every dataset | `data/data_dictionary.yml` and generated `DATA_DICTIONARY.md` | All | auto | Pass |
+| 27 | Commit hash or tag resolves and the app runs | Release tag; checker opens every page | Yajat | auto + manual | Tag `v1.2`; `main` matches it |
+| 28 | Provenance row from every member, verification that could fail | `docs/AI_PROVENANCE.md` | **Each member** | auto | **Fail:** no rows from Siddharth or Niki |
+| 29 | Data and AI disclosure statement | `DISCLOSURE.md` | All add their AI section | auto | Pass; Siddharth's and Niki's sections are not written |
 | 30 | Processed files regenerate from samples | `scripts/build_all.py`; checker rebuilds in a clean copy | All | auto | Pass |
 
 ## Chart family plan (check 14)
 
-Families from the FT Visual Vocabulary. Three are needed across the app; this plan gives five.
+Families from the FT Visual Vocabulary. Three are needed across the app; the seven charts as built use three.
 
 | Page | Chart | Family |
 |---|---|---|
 | 1. Global scale | Data-centre electricity 2020-2030 (line) | Change over time |
 | 1. Global scale | Growth index 2020 = 100 (line) | Change over time |
 | 1. Global scale | Regional breakdown (stacked bar) | Part-to-whole |
-| 2. Where it lands | Data-centre share by place, sorted (bar or dot plot) | **Ranking** |
-| 3. Compute vs efficiency | Training compute vs hardware efficiency (scatter, log scale) | **Correlation** |
-| 4. Water | Data-centre water use by year or operator (bar), or a map of sites vs water stress | **Magnitude** or **Spatial** |
+| 2. Where it lands | Data-centre share of electricity, chosen place vs world (horizontal bar) | Magnitude |
+| 3. Compute vs efficiency | Training compute vs chip efficiency, indexed to the start year (line, log scale) | Change over time |
+| 3. Compute vs efficiency | Doubling time of each (horizontal bar) | Magnitude |
+| 4. Water | Google's water consumed, replenished and The Dalles (bar) | Magnitude |
 
 ## Colour check (check 18)
 

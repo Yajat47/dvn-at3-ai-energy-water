@@ -17,6 +17,5 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - name: Rubric checks (data package, docs, app)
-        # 26 (dictionary entries for the page 3 data) and 28 (a provenance row per member) wait on teammates.
-        # Remove "--pending 26,28" before the 6 Nov milestone.
-        run: python scripts/check_package.py --pending 26,28
+        # 28 (a provenance row per member) is not met: Siddharth and Niki have no rows. It is reported, not enforced.
+        run: python scripts/check_package.py --pending 28

@@ -25,7 +25,7 @@ Every substantive AI use is a row in the AI provenance matrix, `docs/AI_PROVENAN
 - **Documentation.** README, this statement's structure, `docs/design-log.md`, `docs/research-brief.md`, `docs/PART2_CHECKLIST.md`.
 - **Story.** It suggested the wording of the group question and the persona. I had the persona renamed.
 - **My Part 1 recording.** A rehearsal script, a transcript of my recording, and trimming the recording to under five minutes.
-- **Integration and submission.** Merging teammates' branches, extending the Home answer with the evidence from pages 2 and 4, rewriting the Sources page tables to fit 1366x768, and the one-page submission PDF, built by a script from the release tag.
+- **Integration and submission.** Merging teammates' branches, extending the Home answer with the evidence from pages 2, 3 and 4, rewriting the Sources page tables to fit 1366x768, and the one-page submission PDF, built by a script from the release tag.
 
 Commits made with Claude are marked `Co-Authored-By: Claude` in the git history.
 
