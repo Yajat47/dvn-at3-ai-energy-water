@@ -28,11 +28,13 @@ One entry per person: the chart you own, the visual task, the form you chose, th
 
 ## Niki: 3. Compute vs efficiency
 
-- **Chart:**
-- **Visual task:**
-- **Form chosen:**
-- **Alternative rejected:**
-- **Why it lost:**
+- **Chart:** Training compute of the largest model vs efficiency of the best chip, 2012 to 2025 (`views/compute_vs_efficiency.py`)
+- **Visual task:** Compare the growth rates of two series in different units (FLOP and FLOP/s per W), to answer whether efficiency gains keep pace with compute.
+- **Form chosen:** Both series indexed to the start year = 1, as two lines on one log axis. The distance between the lines is the gap in growth. A start-year slider re-indexes both lines, so the reader can check the gap is not an artefact of 2012.
+- **Alternative rejected:** A dual y-axis line chart, FLOP on the left and FLOP/s per W on the right.
+- **Why it lost:** With two independent scales, the lines can be made to cross or run together just by stretching either axis, so the picture shows the designer's axis choice rather than the data. Indexing to a common base answers the actual question (which grew faster?) on one honest scale.
+- **Second decision:** Log axis, not linear. Compute grows by about eight orders of magnitude, so on a linear axis the efficiency line sits on zero and every year before 2023 disappears.
+- **Labels:** Only the start, each new record and the last year are labelled, so every change is readable without hovering and the labels do not overlap.
 
 ---
 

@@ -40,6 +40,22 @@ sources:
     retrieved: '2026-10-26'
     cadence: Annual
     owner: Akil
+  - id: EPOCH-MODELS
+    title: Notable AI Models
+    publisher: Epoch AI
+    url: https://epoch.ai/data/notable-ai-models
+    licence: CC BY 4.0
+    retrieved: '2026-10-21'
+    cadence: Updated continuously as models are published
+    owner: Niki
+  - id: EPOCH-HARDWARE
+    title: Machine Learning Hardware
+    publisher: Epoch AI
+    url: https://epoch.ai/data/machine-learning-hardware
+    licence: CC BY 4.0
+    retrieved: '2026-10-21'
+    cadence: Updated as new chips are released
+    owner: Niki
 
 datasets:
   # ---------------------------------------------------------------- source samples
@@ -123,6 +139,121 @@ datasets:
       quote: {type: string, unit: 'none', description: "Words from the report, word for word"}
     transform: Typed in by hand from the report PDF; the quote column holds the report's own words for each number.
     owner: Akil
+
+  - id: epoch_notable_ai_models
+    role: sample
+    path: data/samples/epoch_notable_ai_models.csv
+    format: csv
+    source_ids: [EPOCH-MODELS]
+    description: Epoch AI's list of notable AI models with training compute, parameters and publication date.
+    primary_key: [Model]
+    time_column: Publication date
+    time_coverage: 1950-2026 (models published up to the retrieval date)
+    latest_observation: '2026-09-30'
+    columns:
+      Model: {type: string, unit: none, description: Model name as published by Epoch AI}
+      Organization: {type: string, unit: none, description: Developer organisation(s)}
+      Publication date: {type: date, unit: date, description: Date the model was published (YYYY-MM-DD)}
+      Domain: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Task: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Parameters: {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Parameters notes: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Training compute (FLOP): {type: number, unit: FLOP, description: Total floating-point operations used to train the model; used by build_compute.py}
+      Training compute notes: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Training dataset: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Training dataset size (total): {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Dataset size notes: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Confidence: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Link: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Reference: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Citations: {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Authors: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Abstract: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Organization categorization: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Country (of organization): {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Notability criteria: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Notability criteria notes: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Epochs: {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Training time (hours): {type: number, unit: hours, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Training time notes: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Training hardware: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Hardware quantity: {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Hardware utilization (MFU): {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Training compute cost (2023 USD): {type: number, unit: 2023 USD, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Compute cost notes: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Training power draw (W): {type: number, unit: W, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Base model: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Finetune compute (FLOP): {type: number, unit: FLOP, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Finetune compute notes: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Batch size: {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Batch size notes: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Model accessibility: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Training code accessibility: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Inference code accessibility: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Accessibility notes: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Numerical format: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Frontier model: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Hardware acquisition cost: {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Hardware utilization (HFU): {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Training compute cost (cloud): {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Training compute cost (upfront): {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Open model weights?: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+    transform: Downloaded unchanged from https://epoch.ai/data/notable_ai_models.csv by scripts/fetch_sources.py.
+    owner: Niki
+
+  - id: epoch_ml_hardware
+    role: sample
+    path: data/samples/epoch_ml_hardware.csv
+    format: csv
+    source_ids: [EPOCH-HARDWARE]
+    description: Epoch AI's list of machine-learning chips with performance at each precision, power (TDP) and release date.
+    primary_key: [Hardware name]
+    time_column: Release date
+    time_coverage: 2008-2026 (chips released up to the retrieval date)
+    latest_observation: '2026-09-30'
+    columns:
+      Hardware name: {type: string, unit: none, description: Chip name as published by Epoch AI}
+      Manufacturer: {type: string, unit: none, description: Chip manufacturer}
+      Type: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Notes: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Release date: {type: date, unit: date, description: Date the chip was released (YYYY-MM-DD)}
+      Release price (USD): {type: number, unit: USD, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Tensor-FP16/BF16 performance (FLOP/s): {type: number, unit: FLOP/s, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      FP8 performance (FLOP/s): {type: number, unit: FLOP/s, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      FP4 performance (FLOP/s): {type: number, unit: FLOP/s, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Memory (bytes): {type: number, unit: bytes, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Memory bandwidth (byte/s): {type: number, unit: byte/s, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Intranode bandwidth (byte/s): {type: number, unit: byte/s, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Internode bandwidth (bit/s): {type: number, unit: bit/s, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      TDP (W): {type: number, unit: W, description: 'Thermal design power, the rated power draw in watts; used by build_compute.py'}
+      FP64 (double precision) performance (FLOP/s): {type: number, unit: FLOP/s, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      FP32 (single precision) performance (FLOP/s): {type: number, unit: FLOP/s, description: Peak FP32 operations per second; used by build_compute.py}
+      TF32 (TensorFloat-32) performance (FLOP/s): {type: number, unit: FLOP/s, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      FP16 (half precision) performance (FLOP/s): {type: number, unit: FLOP/s, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      INT16 performance (OP/s): {type: number, unit: OP/s, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      INT8 performance (OP/s): {type: number, unit: OP/s, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      INT4 performance (OP/s): {type: number, unit: OP/s, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Foundry: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Die Size (mm^2): {type: number, unit: mm^2, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Base clock (MHz): {type: number, unit: MHz, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Boost clock (MHz): {type: number, unit: MHz, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Memory clock (MHz): {type: number, unit: MHz, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Memory bus (bit): {type: number, unit: bit, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Tensor cores: {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Process size (nm): {type: number, unit: nm, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Transistors (millions): {type: number, unit: millions, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Link to datasheet: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Source for the price: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      ML models: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Last modified: {type: string, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Max performance: {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Energy efficiency: {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Total processing performance (bit-OP/s): {type: number, unit: bit-OP/s, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Price-performance: {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      ML OP/s: {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+      Inference Capacity Index (GB300e): {type: number, unit: none, description: 'Epoch AI field, kept exactly as published; not used by this app'}
+    transform: Downloaded unchanged from https://epoch.ai/data/ml_hardware.csv by scripts/fetch_sources.py.
+    owner: Niki
 
   # ---------------------------------------------------------------- processed files the app reads
   - id: global_dc_electricity
@@ -226,3 +357,54 @@ datasets:
         - Add a plain-English label to each. No value is changed.
         - The page computes The Dalles share = The Dalles gallons / total gallons x 100.
     owner: Akil
+
+  - id: compute_vs_efficiency
+    role: processed
+    path: data/processed/compute_vs_efficiency.csv
+    format: csv
+    source_ids: [EPOCH-MODELS, EPOCH-HARDWARE]
+    description: Record-to-date training compute of the largest AI model and FP32 efficiency of the best chip, by year, each indexed to 2012 = 1.
+    primary_key: [series, year]
+    time_column: year
+    time_coverage: 2012-2025
+    latest_observation: 2025
+    columns:
+      year: {type: integer, unit: year, description: Calendar year}
+      series: {type: string, unit: none, description: 'Training compute of the largest model, or Efficiency of the best chip (FP32)'}
+      value: {type: number, unit: see unit column, description: Record value released up to and including this year}
+      unit: {type: string, unit: none, description: Unit of value (FLOP or FLOP/s per W)}
+      record_holder: {type: string, unit: none, description: Model or chip that holds the record}
+      record_organization: {type: string, unit: none, description: Developer or manufacturer of the record holder}
+      record_year: {type: integer, unit: year, description: Year the record holder was released}
+      index_2012: {type: number, unit: index (2012 = 1), description: value divided by the series' 2012 value}
+    transform:
+      script: scripts/build_compute.py
+      inputs: [epoch_notable_ai_models, epoch_ml_hardware]
+      steps: ['Models: keep rows with a publication date and a positive Training compute (FLOP).', 'Chips: keep rows with a release date, FP32 performance and TDP; efficiency = FP32 FLOP/s / TDP W.', 'For
+          each year keep the best value released up to and including that year, so neither series falls.', Index each series to its 2012 value = 1., Stop if a record falls or either series fails to grow.]
+    owner: Niki
+
+  - id: compute_growth_summary
+    role: processed
+    path: data/processed/compute_growth_summary.csv
+    format: csv
+    source_ids: [EPOCH-MODELS, EPOCH-HARDWARE]
+    description: Total multiple, average yearly growth and doubling time of each series in compute_vs_efficiency, 2012 to 2025.
+    primary_key: [series]
+    time_column: end_year
+    time_coverage: 2012-2025
+    latest_observation: 2025
+    columns:
+      series: {type: string, unit: none, description: 'Series name, as in compute_vs_efficiency'}
+      start_year: {type: integer, unit: year, description: First year of the comparison}
+      end_year: {type: integer, unit: year, description: Last year of the comparison}
+      start_value: {type: number, unit: FLOP or FLOP/s per W, description: Record value in start_year}
+      end_value: {type: number, unit: FLOP or FLOP/s per W, description: Record value in end_year}
+      total_multiple: {type: number, unit: times, description: end_value / start_value}
+      growth_per_year: {type: number, unit: times per year, description: total_multiple ^ (1 / years)}
+      doubling_time_months: {type: number, unit: months, description: 12 x ln 2 / ln(growth_per_year)}
+    transform:
+      script: scripts/build_compute.py
+      inputs: [compute_vs_efficiency]
+      steps: [growth_per_year = (end_value / start_value) ^ (1 / (end_year - start_year))., doubling_time_months = 12 x ln 2 / ln(growth_per_year).]
+    owner: Niki

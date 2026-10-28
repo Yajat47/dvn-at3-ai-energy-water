@@ -38,7 +38,7 @@ TEAM = {
 STATUS = {
     "global": "Draft ready",
     "where": "In progress",
-    "compute": "In progress",
+    "compute": "Draft ready",
     "water": "In progress",
 }
 
@@ -70,5 +70,6 @@ LIMITS = [
     "The IEA publishes no data-centre estimates for 2021 or 2022, so trends between 2020 and 2023 are a straight join, not data.",
     "The 2030 figure is one IEA base-case projection, not a forecast range; other scenarios and other estimators give different numbers.",
     "Our files do not separate AI workloads from other data-centre work such as streaming and cloud storage.",
+    "Page 3 compares records (the largest model, the most efficient chip), not the average, and measures efficiency in FP32 per rated watt, which understates modern AI chips.",
     "National totals hide the substation and catchment level where a council's decision actually sits.",
 ]
