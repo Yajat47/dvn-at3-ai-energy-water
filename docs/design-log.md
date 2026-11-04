@@ -18,11 +18,11 @@ One entry per person: the chart you own, the visual task, the form you chose, th
 
 ## Siddharth: 2. Where it lands
 
-- **Chart:**
-- **Visual task:**
-- **Form chosen:**
-- **Alternative rejected:**
-- **Why it lost:**
+- **Chart:** Data-centre electricity share in a selected country or region compared with the world (`views/where_it_lands.py`).
+- **Visual task:** Compare the percentage of electricity demand used by data centres in two geographies during the same year.
+- **Form chosen:** Horizontal bars with percentage labels and a fixed 0–6% axis. Readers can change the year and comparison location.
+- **Alternative rejected:** A pie chart.
+- **Why it lost:** These percentages use different geographical totals, so they are not parts of one whole. Horizontal bars make the difference easier to compare.
 
 ---
 
