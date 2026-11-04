@@ -18,11 +18,16 @@ One entry per person: the chart you own, the visual task, the form you chose, th
 
 ## Siddharth: 2. Where it lands
 
+## Siddharth: 2. Where it lands
+
 - **Chart:** Data-centre electricity share in a selected country or region compared with the world (`views/where_it_lands.py`).
-- **Visual task:** Compare the percentage of electricity demand used by data centres in two geographies during the same year.
-- **Form chosen:** Horizontal bars with percentage labels and a fixed 0–6% axis. Readers can change the year and comparison location.
-- **Alternative rejected:** A pie chart.
-- **Why it lost:** These percentages use different geographical totals, so they are not parts of one whole. Horizontal bars make the difference easier to compare.
+- **Visual task:** Compare magnitude. Show whether data centres account for a larger or smaller share of electricity demand in the selected place than globally, using figures from the same year.
+- **Form chosen:** A horizontal bar chart with both bars starting at zero. The percentage labels show the exact values without hovering, while the year and location controls let readers explore how the comparison changes.
+- **Alternative rejected:** A pie chart showing the selected place alongside the world.
+- **Why it lost:** These percentages are not separate pieces of one total. Each uses electricity demand within its own geography as the denominator, and the selected place is already included in the world figure. Putting them into a pie would suggest a relationship the data does not support. Bar lengths make the comparison clearer.
+- **Second decision:** Keep the horizontal axis fixed at 0–6% when readers change the filters. This keeps the scale consistent, so a small percentage does not suddenly look large because the axis has changed.
+- **Colour and context:** The selected location uses blue, while the world reference uses grey. This draws attention to the chosen place while keeping the global benchmark visible.
+- **Interpretation and limits:** A sentence below the chart expresses the selected place’s share as a multiple of the world share. The page also explains that these figures cover all data centres and cannot isolate AI electricity use or establish whether a particular local grid has enough capacity.
 
 ---
 
