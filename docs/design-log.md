@@ -16,7 +16,6 @@ One entry per person: the chart you own, the visual task, the form you chose, th
 
 ---
 
-## Siddharth: 2. Where it lands
 
 ## Siddharth: 2. Where it lands
 
