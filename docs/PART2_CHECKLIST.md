@@ -1,6 +1,6 @@
 # Part 2 checklist (due Fri 20 Nov 2026, 11:59pm)
 
-Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests the ones marked **auto**; the rest need a person. "Status" is as of 28 Oct 2026 (release `v1.2`, the submitted version).
+Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests the ones marked **auto**; the rest need a person. "Status" is as of 6 Nov 2026 (release `v1.3`, the submitted version).
 
 ## Timeline
 
@@ -32,7 +32,7 @@ Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests 
 | 12 | Every chart has a title or caption saying what it shows | `####` title stating the finding plus `st.caption` | All | manual | Pass on every page |
 | 13 | At least four charts | Page 1 has 3; each other page adds at least 1 | All | auto | Pass (7 charts) |
 | 14 | At least three Visual Vocabulary families | See the family plan below | All | manual | Pass: change over time, part-to-whole, magnitude |
-| 15 | Form matches task | Design log entry per chart | All | manual | Pass on every page; Siddharth's design-log entry is not written |
+| 15 | Form matches task | Design log entry per chart | All | manual | Pass on every page |
 | 16 | Every axis and legend labelled with units | `style(fig, x_title=, y_title=, legend_title=)` | All | auto | Pass |
 | 17 | Every value readable without hovering | Text labels on every point or bar | All | auto (warning) | Pass |
 | 18 | Colours survive a CVD check | Only `utils/theme.py` colours; validator passed (below) | All | auto | Pass |
@@ -44,9 +44,9 @@ Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests 
 | 24 | Sources and last refresh on screen | Footer on every page from the dictionary | Yajat | auto | Pass |
 | 25 | Data folder with samples and processed files | `data/samples/`, `data/processed/` | All | auto | Pass |
 | 26 | Data dictionary covers every dataset | `data/data_dictionary.yml` and generated `DATA_DICTIONARY.md` | All | auto | Pass |
-| 27 | Commit hash or tag resolves and the app runs | Release tag; checker opens every page | Yajat | auto + manual | Tag `v1.2`; `main` matches it |
-| 28 | Provenance row from every member, verification that could fail | `docs/AI_PROVENANCE.md` | **Each member** | auto | **Fail:** no rows from Siddharth or Niki |
-| 29 | Data and AI disclosure statement | `DISCLOSURE.md` | All add their AI section | auto | Pass; Siddharth's and Niki's sections are not written |
+| 27 | Commit hash or tag resolves and the app runs | Release tag; checker opens every page | Yajat | auto + manual | Tag `v1.3`; `main` matches it |
+| 28 | Provenance row from every member, verification that could fail | `docs/AI_PROVENANCE.md` | **Each member** | auto | **Fail:** no rows from Siddharth, Niki or Sai |
+| 29 | Data and AI disclosure statement | `DISCLOSURE.md` | All add their AI section | auto | Pass; Siddharth's, Niki's and Sai's sections are not written |
 | 30 | Processed files regenerate from samples | `scripts/build_all.py`; checker rebuilds in a clean copy | All | auto | Pass |
 
 ## Chart family plan (check 14)

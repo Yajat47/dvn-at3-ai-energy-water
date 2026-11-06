@@ -2,7 +2,7 @@
 
 DVN 36104 Assignment 3 group data narrative, built with Streamlit.
 
-**Team:** Yajat Srinivasa Murty (lead), Siddharth Guruswamy, Niki Miyake, Akil Venkateshkumar.
+**Team:** Yajat Srinivasa Murty (lead), Siddharth Guruswamy, Niki Miyake, Akil Venkateshkumar, Sai Akarsh Viragani.
 
 - **Live app:** https://dvn-at3-ai-energy-water.streamlit.app
 - **Repository:** https://github.com/Yajat47/dvn-at3-ai-energy-water
