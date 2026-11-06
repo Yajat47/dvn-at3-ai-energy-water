@@ -1,6 +1,6 @@
 # Part 2 checklist (due Fri 20 Nov 2026, 11:59pm)
 
-Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests the ones marked **auto**; the rest need a person. "Status" is as of 6 Nov 2026 (release `v1.3`, the submitted version).
+Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests the ones marked **auto**; the rest need a person. "Status" is as of 6 Nov 2026. The submission names the tag `final`.
 
 ## Timeline
 
@@ -44,7 +44,7 @@ Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests 
 | 24 | Sources and last refresh on screen | Footer on every page from the dictionary | Yajat | auto | Pass |
 | 25 | Data folder with samples and processed files | `data/samples/`, `data/processed/` | All | auto | Pass |
 | 26 | Data dictionary covers every dataset | `data/data_dictionary.yml` and generated `DATA_DICTIONARY.md` | All | auto | Pass |
-| 27 | Commit hash or tag resolves and the app runs | Release tag; checker opens every page | Yajat | auto + manual | Tag `v1.3`; `main` matches it |
+| 27 | Commit hash or tag resolves and the app runs | Tag `final`, moved only before the deadline; `main` needs Yajat's approval to change | Yajat | auto + manual | Pass: `final` and `main` are the same commit |
 | 28 | Provenance row from every member, verification that could fail | `docs/AI_PROVENANCE.md` | **Each member** | auto | **Fail:** no rows from Siddharth, Niki or Sai |
 | 29 | Data and AI disclosure statement | `DISCLOSURE.md` | All add their AI section | auto | Pass; Siddharth's, Niki's and Sai's sections are not written |
 | 30 | Processed files regenerate from samples | `scripts/build_all.py`; checker rebuilds in a clean copy | All | auto | Pass |

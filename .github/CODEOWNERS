@@ -1,0 +1,3 @@
+# Every change to main needs Yajat's approval, so the live app (deployed from main) only changes
+# when the submission tag `final` is moved to match it.
+* @Yajat47
