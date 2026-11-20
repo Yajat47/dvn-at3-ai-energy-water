@@ -75,7 +75,6 @@ _To be added by Niki._
 
 **How I checked it**
 
-1. **Independent hand recalculation:** I took the raw `data/samples/epoch_notable_ai_models.csv` dataset and manually verified the post-2020 compute totals and percentage shares for OpenAI (1.437e27 / 3.022e27 = 47.55%), the top-4 organizations combined (82.8%), and the United States geographic concentration (90.61%).
+1. **Independent recalculation:** I took the raw `data/samples/epoch_notable_ai_models.csv` dataset and manually verified the post-2020 compute totals and percentage shares for OpenAI (1.437e27 / 3.022e27 = 47.55%), the top-4 organizations combined (82.8%), and the United States geographic concentration (90.61%).
 2. **Data lineage verification:** I traced the largest model records directly back to their published rows in the Epoch AI dataset (e.g. OpenAI's frontier models and xAI's Grok series).
-3. **Automated package and rubric verification:** I ran `python scripts/build_all.py` and `python scripts/check_package.py` to ensure all data dictionary columns, primary keys, and transforms were strictly compliant and reproducible from samples alone.
-4. **Layout and visual checks:** I inspected the page in the browser at 1366×768 to ensure no horizontal scrolling occurred, all bar values were legible without hovering, and the color scheme adhered to the team's CVD-checked palette.
+3. **Layout and visual checks:** I inspected the page in the browser at 1366×768 to ensure no horizontal scrolling occurred, all bar values were legible without hovering, and the color scheme adhered to the team's CVD-checked palette.
