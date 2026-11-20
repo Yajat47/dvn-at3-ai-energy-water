@@ -63,3 +63,19 @@ _To be added by Niki._
 1. I opened the report PDF and checked each number in the manual file against its page.
 2. I recalculated The Dalles share by hand: 0.469 / 10.9 x 100 = 4.3%.
 3. I ran `python scripts/build_all.py` and `python scripts/check_package.py` and fixed anything flagged.
+
+### Sai Akarsh Viragani: 5. Concentration
+
+**Tool:** Antigravity (Google), November 2026.
+
+**What I used it for**
+
+- **Coding assistance:** I formulated the core research angle, narrative ideas, and analytical design independently (focusing on organizational and geographic concentration of frontier AI compute to address Daniel's planning dilemmas). I used AI specifically for coding assistance—implementing the Python data aggregation script (`scripts/build_concentration.py`), generating the processed datasets, and coding the Streamlit page layout and Plotly figures (`views/concentration.py`).
+- **Documentation formatting:** Generating the initial markdown and YAML boilerplate for my datasets in `data/data_dictionary.yml`, my design-log entry, and checklist updates.
+
+**How I checked it**
+
+1. **Independent hand recalculation:** I took the raw `data/samples/epoch_notable_ai_models.csv` dataset and manually verified the post-2020 compute totals and percentage shares for OpenAI (1.437e27 / 3.022e27 = 47.55%), the top-4 organizations combined (82.8%), and the United States geographic concentration (90.61%).
+2. **Data lineage verification:** I traced the largest model records directly back to their published rows in the Epoch AI dataset (e.g. OpenAI's frontier models and xAI's Grok series).
+3. **Automated package and rubric verification:** I ran `python scripts/build_all.py` and `python scripts/check_package.py` to ensure all data dictionary columns, primary keys, and transforms were strictly compliant and reproducible from samples alone.
+4. **Layout and visual checks:** I inspected the page in the browser at 1366×768 to ensure no horizontal scrolling occurred, all bar values were legible without hovering, and the color scheme adhered to the team's CVD-checked palette.

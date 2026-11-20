@@ -94,8 +94,9 @@ cards = [
     ("2. Where it lands", "where", "views/where_it_lands.py"),
     ("3. Compute vs efficiency", "compute", "views/compute_vs_efficiency.py"),
     ("4. Water", "water", "views/water.py"),
+    ("5. Concentration", "concentration", "views/concentration.py"),
 ]
-for col, (title, key, page) in zip(st.columns(4), cards):
+for col, (title, key, page) in zip(st.columns(len(cards)), cards):
     with col.container(border=True):
         st.markdown(f"**{title}**  \n{TEAM[key]}")
         st.page_link(page, label="Open", icon=":material/arrow_forward:")

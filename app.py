@@ -15,6 +15,7 @@ pages = {
         st.Page("views/where_it_lands.py", title="2. Where it lands", icon=":material/location_on:"),
         st.Page("views/compute_vs_efficiency.py", title="3. Compute vs efficiency", icon=":material/memory:"),
         st.Page("views/water.py", title="4. Water", icon=":material/water_drop:"),
+        st.Page("views/concentration.py", title="5. Concentration", icon=":material/hub:"),
     ],
     "Method": [
         st.Page("views/sources.py", title="Sources and method", icon=":material/fact_check:"),

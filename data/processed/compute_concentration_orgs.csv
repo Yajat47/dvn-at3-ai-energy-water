@@ -1,0 +1,9 @@
+organization,country,models_count,total_compute_zettaflops,total_compute_flop,share_pct,largest_model,latest_year
+OpenAI,United States of America,17,1437196.39,1.4371963877543002e+27,47.55,GPT-6 Astra,2026
+xAI,United States of America,4,882500.0,8.8250000000002e+26,29.2,Grok 4,2025
+Meta AI,United States of America,25,115615.02,1.1561502272635559e+26,3.83,Llama 4 Behemoth (preview),2025
+Google DeepMind,United States of America,30,67591.42,6.759141877179e+25,2.24,Gemini 1.0 Ultra,2026
+Anthropic,United States of America,3,64366.0,6.436600000000001e+25,2.13,Claude 3.7 Sonnet,2025
+Cursor,United States of America,2,61900.0,6.189999999999999e+25,2.05,Composer 2.5,2026
+Alibaba,China,18,59974.46,5.9974457696e+25,1.98,Qwen3-Max,2025
+Rest of industry,Various,228,333312.06,3.33312058096003e+26,11.03,Doubao-pro,2026

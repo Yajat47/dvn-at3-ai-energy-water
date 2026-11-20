@@ -1,0 +1,4 @@
+country,models_count,total_compute_zettaflops,total_compute_flop,share_pct,top_organization,latest_year
+United States,191,2738534.89,2.7385348894309523e+27,90.61,OpenAI,2026
+China,86,244937.85,2.4493784995787993e+26,8.1,ByteDance,2026
+Rest of world,50,38982.61,3.8982605655635715e+25,1.29,Saudi Aramco,2026

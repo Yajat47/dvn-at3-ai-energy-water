@@ -375,3 +375,58 @@ Total multiple, average yearly growth and doubling time of each series in comput
 | `total_multiple` | number | times | end_value / start_value |
 | `growth_per_year` | number | times per year | total_multiple ^ (1 / years) |
 | `doubling_time_months` | number | months | 12 x ln 2 / ln(growth_per_year) |
+
+### `data/processed/compute_concentration_orgs.csv`
+
+Training compute breakdown and shares for top AI organizations and labs since 2020.
+
+- **Dataset ID:** `compute_concentration_orgs` (owner: Sai)
+- **Source:** Epoch AI, *Notable AI Models*
+- **URL:** https://epoch.ai/data/notable-ai-models
+- **Licence:** CC BY 4.0
+- **Primary key:** `organization`
+- **Time coverage:** 2020-2026
+- **Latest observation:** 2026
+- **Transform:** `scripts/build_concentration.py` from `epoch_notable_ai_models`
+  1. Filter epoch_notable_ai_models to models from 2020 onwards with positive training compute.
+  2. Sum total FLOP per primary organization and identify the top 7 organisations.
+  3. Aggregate all remaining organisations into Rest of industry.
+  4. Calculate each organisation's share of total post-2020 compute.
+
+| Column | Type | Unit | Description |
+|---|---|---|---|
+| `organization` | string | none | Organization or research lab name |
+| `country` | string | none | Primary country of headquarters |
+| `models_count` | integer | models | Number of notable AI models released since 2020 |
+| `total_compute_zettaflops` | number | zettaFLOP | Total training compute in zettaFLOP (1e21 FLOP) |
+| `total_compute_flop` | number | FLOP | Total training compute in floating-point operations |
+| `share_pct` | number | % | Share of all notable model training compute since 2020 |
+| `largest_model` | string | none | Largest notable model released by this organization |
+| `latest_year` | integer | year | Year of most recent notable model release |
+
+### `data/processed/compute_concentration_countries.csv`
+
+Geographic concentration of frontier AI model training compute by country since 2020.
+
+- **Dataset ID:** `compute_concentration_countries` (owner: Sai)
+- **Source:** Epoch AI, *Notable AI Models*
+- **URL:** https://epoch.ai/data/notable-ai-models
+- **Licence:** CC BY 4.0
+- **Primary key:** `country`
+- **Time coverage:** 2020-2026
+- **Latest observation:** 2026
+- **Transform:** `scripts/build_concentration.py` from `epoch_notable_ai_models`
+  1. Filter epoch_notable_ai_models to models from 2020 onwards with positive training compute.
+  2. Group models by primary country of organization headquarters.
+  3. Separate United States, China, and Rest of world.
+  4. Calculate each country's share of total post-2020 compute.
+
+| Column | Type | Unit | Description |
+|---|---|---|---|
+| `country` | string | none | Country of organization headquarters |
+| `models_count` | integer | models | Number of notable AI models released since 2020 |
+| `total_compute_zettaflops` | number | zettaFLOP | Total training compute in zettaFLOP (1e21 FLOP) |
+| `total_compute_flop` | number | FLOP | Total training compute in floating-point operations |
+| `share_pct` | number | % | Share of all notable model training compute since 2020 |
+| `top_organization` | string | none | Leading organization by compute in this country |
+| `latest_year` | integer | year | Year of most recent notable model release |

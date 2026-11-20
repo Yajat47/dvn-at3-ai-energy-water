@@ -45,8 +45,8 @@ Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests 
 | 25 | Data folder with samples and processed files | `data/samples/`, `data/processed/` | All | auto | Pass |
 | 26 | Data dictionary covers every dataset | `data/data_dictionary.yml` and generated `DATA_DICTIONARY.md` | All | auto | Pass |
 | 27 | Commit hash or tag resolves and the app runs | Tag `final`, moved only before the deadline; `main` needs Yajat's approval to change | Yajat | auto + manual | Pass: `final` and `main` are the same commit |
-| 28 | Provenance row from every member, verification that could fail | `docs/AI_PROVENANCE.md` | **Each member** | auto | **Fail:** no rows from Siddharth, Niki or Sai |
-| 29 | Data and AI disclosure statement | `DISCLOSURE.md` | All add their AI section | auto | Pass; Siddharth's, Niki's and Sai's sections are not written |
+| 28 | Provenance row from every member, verification that could fail | `docs/AI_PROVENANCE.md` | **Each member** | auto | **Pending:** rows present for Yajat, Akil and Sai; pending Siddharth and Niki |
+| 29 | Data and AI disclosure statement | `DISCLOSURE.md` | All add their AI section | auto | Pass; sections present for Yajat, Akil and Sai |
 | 30 | Processed files regenerate from samples | `scripts/build_all.py`; checker rebuilds in a clean copy | All | auto | Pass |
 
 ## Chart family plan (check 14)
@@ -62,6 +62,8 @@ Families from the FT Visual Vocabulary. Three are needed across the app; the sev
 | 3. Compute vs efficiency | Training compute vs chip efficiency, indexed to the start year (line, log scale) | Change over time |
 | 3. Compute vs efficiency | Doubling time of each (horizontal bar) | Magnitude |
 | 4. Water | Google's water consumed, replenished and The Dalles (bar) | Magnitude |
+| 5. Concentration | Top AI organizations by compute share (horizontal bar) | Magnitude |
+| 5. Concentration | Frontier compute by country (bar) | Magnitude |
 
 ## Colour check (check 18)
 

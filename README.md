@@ -37,6 +37,7 @@ The same three stories appear on the app's Home page with links (`USER_STORIES` 
 | 2. Where it lands | `views/where_it_lands.py` | Siddharth |
 | 3. Compute vs efficiency | `views/compute_vs_efficiency.py` | Niki |
 | 4. Water | `views/water.py` | Akil |
+| 5. Concentration | `views/concentration.py` | Sai |
 | Sources and method | `views/sources.py` | Yajat |
 
 ## Portfolio documents

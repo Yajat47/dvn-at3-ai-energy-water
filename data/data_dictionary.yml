@@ -408,3 +408,60 @@ datasets:
       inputs: [compute_vs_efficiency]
       steps: [growth_per_year = (end_value / start_value) ^ (1 / (end_year - start_year))., doubling_time_months = 12 x ln 2 / ln(growth_per_year).]
     owner: Niki
+
+  - id: compute_concentration_orgs
+    role: processed
+    path: data/processed/compute_concentration_orgs.csv
+    format: csv
+    source_ids: [EPOCH-MODELS]
+    description: Training compute breakdown and shares for top AI organizations and labs since 2020.
+    primary_key: [organization]
+    time_column: latest_year
+    time_coverage: 2020-2026
+    latest_observation: 2026
+    columns:
+      organization: {type: string, unit: none, description: Organization or research lab name}
+      country: {type: string, unit: none, description: Primary country of headquarters}
+      models_count: {type: integer, unit: models, description: Number of notable AI models released since 2020}
+      total_compute_zettaflops: {type: number, unit: zettaFLOP, description: Total training compute in zettaFLOP (1e21 FLOP)}
+      total_compute_flop: {type: number, unit: FLOP, description: Total training compute in floating-point operations}
+      share_pct: {type: number, unit: '%', description: Share of all notable model training compute since 2020}
+      largest_model: {type: string, unit: none, description: Largest notable model released by this organization}
+      latest_year: {type: integer, unit: year, description: Year of most recent notable model release}
+    transform:
+      script: scripts/build_concentration.py
+      inputs: [epoch_notable_ai_models]
+      steps:
+        - Filter epoch_notable_ai_models to models from 2020 onwards with positive training compute.
+        - Sum total FLOP per primary organization and identify the top 7 organisations.
+        - Aggregate all remaining organisations into Rest of industry.
+        - Calculate each organisation's share of total post-2020 compute.
+    owner: Sai
+
+  - id: compute_concentration_countries
+    role: processed
+    path: data/processed/compute_concentration_countries.csv
+    format: csv
+    source_ids: [EPOCH-MODELS]
+    description: Geographic concentration of frontier AI model training compute by country since 2020.
+    primary_key: [country]
+    time_column: latest_year
+    time_coverage: 2020-2026
+    latest_observation: 2026
+    columns:
+      country: {type: string, unit: none, description: Country of organization headquarters}
+      models_count: {type: integer, unit: models, description: Number of notable AI models released since 2020}
+      total_compute_zettaflops: {type: number, unit: zettaFLOP, description: Total training compute in zettaFLOP (1e21 FLOP)}
+      total_compute_flop: {type: number, unit: FLOP, description: Total training compute in floating-point operations}
+      share_pct: {type: number, unit: '%', description: Share of all notable model training compute since 2020}
+      top_organization: {type: string, unit: none, description: Leading organization by compute in this country}
+      latest_year: {type: integer, unit: year, description: Year of most recent notable model release}
+    transform:
+      script: scripts/build_concentration.py
+      inputs: [epoch_notable_ai_models]
+      steps:
+        - Filter epoch_notable_ai_models to models from 2020 onwards with positive training compute.
+        - Group models by primary country of organization headquarters.
+        - Separate United States, China, and Rest of world.
+        - Calculate each country's share of total post-2020 compute.
+    owner: Sai
