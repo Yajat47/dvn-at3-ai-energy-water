@@ -37,6 +37,7 @@ PAGES = [
     "views/where_it_lands.py",
     "views/compute_vs_efficiency.py",
     "views/water.py",
+    "views/concentration.py",
     "views/sources.py",
 ]
 

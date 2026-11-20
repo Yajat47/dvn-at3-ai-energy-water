@@ -21,6 +21,7 @@ PERSONA = {
         "Where does that load actually land?",
         "Will efficiency gains cancel out the growth?",
         "What does it mean for water, not just power?",
+        "Who is actually driving the explosive compute demand?",
     ],
 }
 
@@ -31,10 +32,11 @@ TEAM = {
     "where": "Siddharth",
     "compute": "Niki",
     "water": "Akil",
+    "concentration": "Sai",
     "sources": "Yajat",
 }
 
-# The three user stories (README lists the same three). Each must be walkable in the app.
+# The user stories (README lists the same stories). Each must be walkable in the app.
 USER_STORIES = [
     {
         "as_a": "infrastructure planner at a Western Sydney council",
@@ -53,6 +55,12 @@ USER_STORIES = [
         "i_want": "to see whether efficiency gains are keeping pace with the growth in AI compute",
         "so_that": "I know whether to plan for data-centre demand that keeps rising or one that levels off",
         "pages": ["views/compute_vs_efficiency.py", "views/global_scale.py"],
+    },
+    {
+        "as_a": "infrastructure planner at a Western Sydney council",
+        "i_want": "to see which organizations and countries drive frontier AI compute",
+        "so_that": "I can judge whether local development applications represent frontier training clusters or standard regional cloud facilities",
+        "pages": ["views/concentration.py"],
     },
 ]
 

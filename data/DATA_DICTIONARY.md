@@ -10,7 +10,7 @@ Generated from `data/data_dictionary.yml` by `scripts/build_all.py`. Edit the YA
 | `OWID-DC-SHARE` | Share of total electricity demand used by data centers | Our World in Data, based on IEA (2025, 2026) and Ember (2026) | https://ourworldindata.org/grapher/data-centers-share-electricity-demand | CC BY 4.0 (Our World in Data processing); underlying IEA data under IEA terms | 2026-10-20 |
 | `OWID-EMBER-DEMAND` | Electricity demand | Our World in Data, based on Ember (2026) | https://ourworldindata.org/grapher/electricity-demand | CC BY 4.0 | 2026-10-20 |
 | `GOOGLE-2026-ENV` | Environmental Report 2026 | Google | https://sustainability.google/files/google-2026-environmental-report.pdf | Company report (figures quoted with attribution) | 2026-10-26 |
-| `EPOCH-MODELS` | Notable AI Models | Epoch AI | https://epoch.ai/data/notable-ai-models | CC BY 4.0 | 2026-10-21 |
+| `EPOCH-MODELS` | Notable AI Models | Epoch AI | https://epoch.ai/data/notable-ai-models | CC BY 4.0 | 2026-11-20 |
 | `EPOCH-HARDWARE` | Machine Learning Hardware | Epoch AI | https://epoch.ai/data/machine-learning-hardware | CC BY 4.0 | 2026-10-21 |
 
 ## Source samples
@@ -375,3 +375,58 @@ Total multiple, average yearly growth and doubling time of each series in comput
 | `total_multiple` | number | times | end_value / start_value |
 | `growth_per_year` | number | times per year | total_multiple ^ (1 / years) |
 | `doubling_time_months` | number | months | 12 x ln 2 / ln(growth_per_year) |
+
+### `data/processed/compute_concentration_orgs.csv`
+
+Training compute breakdown and shares for top AI organizations and labs since 2020.
+
+- **Dataset ID:** `compute_concentration_orgs` (owner: Sai)
+- **Source:** Epoch AI, *Notable AI Models*
+- **URL:** https://epoch.ai/data/notable-ai-models
+- **Licence:** CC BY 4.0
+- **Primary key:** `organization`
+- **Time coverage:** 2020-2026
+- **Latest observation:** 2026
+- **Transform:** `scripts/build_concentration.py` from `epoch_notable_ai_models`
+  1. Filter epoch_notable_ai_models to models from 2020 onwards with positive training compute.
+  2. Sum total FLOP per primary organization and identify top named frontier labs.
+  3. Aggregate remaining models by geographic origin (Other US, Other China, Rest of world).
+  4. Calculate each entity's share of total post-2020 compute.
+
+| Column | Type | Unit | Description |
+|---|---|---|---|
+| `organization` | string | none | Organization or research lab name |
+| `country` | string | none | Primary country of headquarters |
+| `models_count` | integer | models | Number of notable AI models released since 2020 |
+| `total_compute_zettaflops` | number | zettaFLOP | Total training compute in zettaFLOP (1e21 FLOP) |
+| `total_compute_flop` | number | FLOP | Total training compute in floating-point operations |
+| `share_pct` | number | % | Share of all notable model training compute since 2020 |
+| `largest_model` | string | none | Largest notable model released by this organization |
+| `latest_year` | integer | year | Year of most recent notable model release |
+
+### `data/processed/compute_concentration_countries.csv`
+
+Geographic concentration of frontier AI model training compute by country since 2020.
+
+- **Dataset ID:** `compute_concentration_countries` (owner: Sai)
+- **Source:** Epoch AI, *Notable AI Models*
+- **URL:** https://epoch.ai/data/notable-ai-models
+- **Licence:** CC BY 4.0
+- **Primary key:** `country`
+- **Time coverage:** 2020-2026
+- **Latest observation:** 2026
+- **Transform:** `scripts/build_concentration.py` from `epoch_notable_ai_models`
+  1. Filter epoch_notable_ai_models to models from 2020 onwards with positive training compute.
+  2. Group models by primary country of organization headquarters.
+  3. Separate United States, China, and Rest of world.
+  4. Calculate each country's share of total post-2020 compute.
+
+| Column | Type | Unit | Description |
+|---|---|---|---|
+| `country` | string | none | Country of organization headquarters |
+| `models_count` | integer | models | Number of notable AI models released since 2020 |
+| `total_compute_zettaflops` | number | zettaFLOP | Total training compute in zettaFLOP (1e21 FLOP) |
+| `total_compute_flop` | number | FLOP | Total training compute in floating-point operations |
+| `share_pct` | number | % | Share of all notable model training compute since 2020 |
+| `top_organization` | string | none | Leading organization by compute in this country |
+| `latest_year` | integer | year | Year of most recent notable model release |

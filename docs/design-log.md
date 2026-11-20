@@ -49,3 +49,15 @@ One entry per person: the chart you own, the visual task, the form you chose, th
 - **Form chosen:** Labelled bar chart in one unit (billion US gallons), one axis, with a finding-style title.
 - **Alternative rejected:** A pie chart of The Dalles against the rest.
 - **Why it lost:** A pie shows The Dalles as a thin sliver, cannot include the replenished figure (a different quantity, not a part of the total), and asks readers to compare angles instead of lengths.
+
+---
+
+## Sai: 5. Concentration
+
+- **Chart:** Top AI organizations and primary countries by training compute share, 2020 to 2026 (`views/concentration.py`)
+- **Visual task:** Compare magnitude and ranking. Show how heavily frontier AI training compute is concentrated in a tiny handful of organizations and one country, rather than being an evenly distributed industry load.
+- **Form chosen:** Horizontal bar charts with direct percentage labels on every bar. The horizontal layout lets long lab names ("Google DeepMind", "Rest of industry") be read clearly without diagonal tilting.
+- **Alternative rejected:** A pie chart or multi-level treemap of organization shares.
+- **Why it lost:** A pie chart asks readers to compare slice angles rather than lengths on a common baseline. With several organizations holding 2% to 4% shares, pie slices become thin, illegible slivers that hide the exact numbers. Treemaps similarly require estimating 2D rectangular areas, which human perception judges far less accurately than 1D bar lengths.
+- **Color consistency & data alignment:** Both charts use a unified geographic color scheme: Blue (`#2a78d6`) for the United States and US-headquartered organizations, Orange (`#eb6834`) for China and Chinese organizations, and Grey (`#b4b2a9`) for the rest of the world. To ensure perfect data transparency and eliminate discrepancies between charts, remaining organizations in Chart 1 are partitioned into geographic tiers (`Other US organizations` at 3.6%, `Other Chinese organizations` at 6.1%, and `Rest of world organizations` at 1.3%). This guarantees that the sum of the blue bars in Chart 1 matches Chart 2's 90.6% US total, the orange bars match the 8.1% China total, and the grey bar matches the 1.3% Rest of world total.
+- **Interactive control:** A multiselect allowing users to filter organizations, paired with an informative empty-state message so the chart never breaks into a blank space or error.

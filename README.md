@@ -25,8 +25,10 @@ It is arguable because the same data supports both answers. Measured against the
    *Walk-through:* **2. Where it lands**, then **4. Water**.
 3. As an infrastructure planner at a Western Sydney council, I want to see whether efficiency gains are keeping pace with the growth in AI compute, so that I know whether to plan for data-centre demand that keeps rising or one that levels off.
    *Walk-through:* **3. Compute vs efficiency**, then the 2030 projection on **1. Global scale**.
+4. As an infrastructure planner at a Western Sydney council, I want to see which organizations and countries drive frontier AI compute, so that I can judge whether local development applications represent frontier training clusters or standard regional cloud facilities.
+   *Walk-through:* **5. Concentration**.
 
-The same three stories appear on the app's Home page with links (`USER_STORIES` in `utils/story.py`). Keep the two in step.
+The same stories appear on the app's Home page with links (`USER_STORIES` in `utils/story.py`). Keep the two in step.
 
 ## Who owns what
 
@@ -37,6 +39,7 @@ The same three stories appear on the app's Home page with links (`USER_STORIES` 
 | 2. Where it lands | `views/where_it_lands.py` | Siddharth |
 | 3. Compute vs efficiency | `views/compute_vs_efficiency.py` | Niki |
 | 4. Water | `views/water.py` | Akil |
+| 5. Concentration | `views/concentration.py` | Sai |
 | Sources and method | `views/sources.py` | Yajat |
 
 ## Portfolio documents

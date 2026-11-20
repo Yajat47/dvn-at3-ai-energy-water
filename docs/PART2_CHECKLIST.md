@@ -1,6 +1,6 @@
 # Part 2 checklist (due Fri 20 Nov 2026, 11:59pm)
 
-Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests the ones marked **auto**; the rest need a person. "Status" is as of 6 Nov 2026. The submission names the tag `final`.
+Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests the ones marked **auto**; the rest need a person. "Status" is as of 20 Nov 2026. The submission names the tag `final`.
 
 ## Timeline
 
@@ -30,7 +30,7 @@ Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests 
 | 10 | Units, baselines, time coverage wherever numbers are compared | Chart captions and number-card captions | All | manual | Pass on every page |
 | 11 | On-screen claims stay within the data | No causal claims or extrapolation beyond the files | All | manual | Pages 1, 2 pass; **page 4 cites two report claims that are not in the data package** |
 | 12 | Every chart has a title or caption saying what it shows | `####` title stating the finding plus `st.caption` | All | manual | Pass on every page |
-| 13 | At least four charts | Page 1 has 3; each other page adds at least 1 | All | auto | Pass (7 charts) |
+| 13 | At least four charts | Page 1 has 3; each other page adds at least 1 | All | auto | Pass (9 charts) |
 | 14 | At least three Visual Vocabulary families | See the family plan below | All | manual | Pass: change over time, part-to-whole, magnitude |
 | 15 | Form matches task | Design log entry per chart | All | manual | Pass on every page |
 | 16 | Every axis and legend labelled with units | `style(fig, x_title=, y_title=, legend_title=)` | All | auto | Pass |
@@ -45,13 +45,13 @@ Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests 
 | 25 | Data folder with samples and processed files | `data/samples/`, `data/processed/` | All | auto | Pass |
 | 26 | Data dictionary covers every dataset | `data/data_dictionary.yml` and generated `DATA_DICTIONARY.md` | All | auto | Pass |
 | 27 | Commit hash or tag resolves and the app runs | Tag `final`, moved only before the deadline; `main` needs Yajat's approval to change | Yajat | auto + manual | Pass: `final` and `main` are the same commit |
-| 28 | Provenance row from every member, verification that could fail | `docs/AI_PROVENANCE.md` | **Each member** | auto | **Fail:** no rows from Siddharth, Niki or Sai |
-| 29 | Data and AI disclosure statement | `DISCLOSURE.md` | All add their AI section | auto | Pass; Siddharth's, Niki's and Sai's sections are not written |
+| 28 | Provenance row from every member, verification that could fail | `docs/AI_PROVENANCE.md` | **Each member** | auto | **Pending:** rows present for Yajat, Akil and Sai; pending Siddharth and Niki |
+| 29 | Data and AI disclosure statement | `DISCLOSURE.md` | All add their AI section | auto | Pass; sections present for Yajat, Akil and Sai |
 | 30 | Processed files regenerate from samples | `scripts/build_all.py`; checker rebuilds in a clean copy | All | auto | Pass |
 
 ## Chart family plan (check 14)
 
-Families from the FT Visual Vocabulary. Three are needed across the app; the seven charts as built use three.
+Families from the FT Visual Vocabulary. Three are needed across the app; the nine charts as built use three.
 
 | Page | Chart | Family |
 |---|---|---|
@@ -62,6 +62,8 @@ Families from the FT Visual Vocabulary. Three are needed across the app; the sev
 | 3. Compute vs efficiency | Training compute vs chip efficiency, indexed to the start year (line, log scale) | Change over time |
 | 3. Compute vs efficiency | Doubling time of each (horizontal bar) | Magnitude |
 | 4. Water | Google's water consumed, replenished and The Dalles (bar) | Magnitude |
+| 5. Concentration | Top AI organizations by compute share (horizontal bar) | Magnitude |
+| 5. Concentration | Frontier compute by country (bar) | Magnitude |
 
 ## Colour check (check 18)
 
