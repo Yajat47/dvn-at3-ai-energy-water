@@ -433,9 +433,9 @@ datasets:
       inputs: [epoch_notable_ai_models]
       steps:
         - Filter epoch_notable_ai_models to models from 2020 onwards with positive training compute.
-        - Sum total FLOP per primary organization and identify the top 7 organisations.
-        - Aggregate all remaining organisations into Rest of industry.
-        - Calculate each organisation's share of total post-2020 compute.
+        - Sum total FLOP per primary organization and identify top named frontier labs.
+        - Aggregate remaining models by geographic origin (Other US, Other China, Rest of world).
+        - Calculate each entity's share of total post-2020 compute.
     owner: Sai
 
   - id: compute_concentration_countries

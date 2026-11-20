@@ -20,8 +20,9 @@ PROC_CNTRY = "data/processed/compute_concentration_countries.csv"
 orgs = data.processed("compute_concentration_orgs")
 countries = data.processed("compute_concentration_countries").set_index("country")
 
-top4_share = orgs.iloc[:4]["share_pct"].sum()
-top2_share = orgs.iloc[:2]["share_pct"].sum()
+named_top4 = orgs[orgs["organization"].isin(["OpenAI", "xAI", "Meta AI", "Google DeepMind"])]
+top4_share = named_top4["share_pct"].sum()
+top2_share = orgs[orgs["organization"].isin(["OpenAI", "xAI"])]["share_pct"].sum()
 top_org = orgs.iloc[0]
 us_row = countries.loc["United States"]
 china_row = countries.loc["China"]
@@ -33,16 +34,15 @@ st.caption(f"Page owner: {TEAM.get(KEY, 'Sai')} · Answers {PERSONA['name']}'s q
 
 st.markdown(
     f"Across all notable AI models released since 2020, training compute is not spread evenly across "
-    f"the tech industry. Just four organizations—**{orgs.iloc[0]['organization']}**, **{orgs.iloc[1]['organization']}**, "
-    f"**{orgs.iloc[2]['organization']}**, and **{orgs.iloc[3]['organization']}**—account for **{top4_share:.1f}%** "
-    f"of all notable training compute. The top two alone account for **{top2_share:.1f}%**. Geographically, the "
-    f"United States accounts for **{us_row['share_pct']:.1f}%** of all frontier compute, China accounts for "
-    f"**{china_row['share_pct']:.1f}%**, and the rest of the world combined represents just **{row_row['share_pct']:.1f}%**."
+    f"the tech industry. Just four organizations—**OpenAI**, **xAI**, **Meta AI**, and **Google DeepMind**—account "
+    f"for **{top4_share:.1f}%** of all notable training compute. The top two alone account for **{top2_share:.1f}%**. "
+    f"Geographically, the United States accounts for **{us_row['share_pct']:.1f}%** of all frontier compute, China "
+    f"accounts for **{china_row['share_pct']:.1f}%**, and the rest of the world combined represents just **{row_row['share_pct']:.1f}%**."
 )
 
 k1, k2, k3 = st.columns(3)
-k1.metric("Top 4 orgs compute share", f"{top4_share:.1f}%", f"{orgs.iloc[0]['organization']} alone: {top_org['share_pct']:.1f}%",
-          delta_color="off", border=True, help="Share of total training compute across all notable models since 2020")
+k1.metric("Top 4 hyperscalers share", f"{top4_share:.1f}%", f"{top_org['organization']} alone: {top_org['share_pct']:.1f}%",
+          delta_color="off", border=True, help="Combined compute share of OpenAI, xAI, Meta AI, and Google DeepMind since 2020")
 k2.metric("United States share", f"{us_row['share_pct']:.1f}%", f"{us_row['models_count']} notable models",
           delta_color="off", border=True, help="Total training compute from organizations headquartered in the US")
 k3.metric("Rest of world combined", f"{row_row['share_pct']:.1f}%", f"{row_row['models_count']} models globally",
@@ -63,12 +63,10 @@ else:
     filtered_orgs = orgs[orgs["organization"].isin(chosen_orgs)].sort_values("share_pct", ascending=True)
     
     # Colors match geography consistently across both charts:
-    # Blue (SERIES[0]) for United States, Orange (SERIES[1]) for China (Alibaba), Grey (CONTEXT) for rest
+    # Blue (SERIES[0]) for United States, Orange (SERIES[1]) for China, Grey (CONTEXT) for Rest of world
     bar_colors = [
-        SERIES[1] if org == "Alibaba" or "China" in country else (
-            SERIES[0] if "United States" in country or org in ["OpenAI", "xAI", "Meta AI", "Google DeepMind", "Anthropic", "Cursor"] else CONTEXT
-        )
-        for org, country in zip(filtered_orgs["organization"], filtered_orgs["country"])
+        SERIES[1] if country == "China" else (SERIES[0] if country == "United States" else CONTEXT)
+        for country in filtered_orgs["country"]
     ]
     
     fig1 = go.Figure(go.Bar(
@@ -85,13 +83,15 @@ else:
     
     max_val = filtered_orgs["share_pct"].max()
     fig1.update_xaxes(range=[0, max_val * 1.25], ticksuffix="%")
-    style(fig1, height=380, x_title="Share of notable training compute since 2020 (%)",
+    style(fig1, height=440, x_title="Share of notable training compute since 2020 (%)",
           y_title="Organization or group", legend=False)
     st.plotly_chart(fig1, config=PLOTLY_CONFIG, width="stretch")
     st.caption(
         "Share of total floating-point operations (FLOP) used to train notable models released 2020–2026. "
         "Source: Epoch AI Notable AI Models dataset. Values are labelled directly on each bar. "
-        "Bar colors match geography across both charts: Blue for US organizations, Orange for China (Alibaba), Grey for other."
+        "Bar colors match geography across both charts: Blue for US organizations (summing to 90.6%), "
+        "Orange for Chinese organizations (summing to 8.1%), and Grey for Rest of world (1.3%). "
+        "Chart 2 below summarizes these exact national totals."
     )
 
 raw_models_df = data.sample("epoch_notable_ai_models.csv")
@@ -101,15 +101,18 @@ trace(
     steps=[
         "Filtered Epoch AI notable models to entries published from 2020 onwards with positive training compute (FLOP).",
         "Extracted the primary organization for each model and consolidated research labs under parent entities.",
-        "Summed total training compute per organization and identified the top 7 individual entities.",
-        "Aggregated all remaining organizations into 'Rest of industry'.",
+        "Summed total training compute per organization and identified the top named entities.",
+        "Aggregated remaining models by geographic origin (Other US, Other China, Rest of world).",
         "Computed each entity's share: entity FLOP / total post-2020 FLOP x 100.",
     ],
     worked_example=(
         f"Total post-2020 FLOP in dataset:       {orgs['total_compute_flop'].sum():.3e} FLOP\n"
         f"OpenAI training compute:               {top_org['total_compute_flop']:.3e} FLOP\n"
         f"OpenAI share:                          {top_org['total_compute_flop']:.3e} / {orgs['total_compute_flop'].sum():.3e} x 100 = {top_org['share_pct']:.2f}%\n"
-        f"Top 4 organizations combined:          {orgs.iloc[:4]['total_compute_flop'].sum():.3e} FLOP ({top4_share:.1f}%)"
+        f"Top 4 US hyperscalers combined:        {named_top4['total_compute_flop'].sum():.3e} FLOP ({top4_share:.1f}%)\n"
+        f"United States total (Chart 2):         {us_row['total_compute_flop']:.3e} FLOP ({us_row['share_pct']:.2f}%)\n"
+        f"China total (Chart 2):                 {china_row['total_compute_flop']:.3e} FLOP ({china_row['share_pct']:.2f}%)\n"
+        f"Rest of world total (Chart 2):         {row_row['total_compute_flop']:.3e} FLOP ({row_row['share_pct']:.2f}%)"
     ),
     tables={
         "Organization concentration summary": orgs,
@@ -136,7 +139,8 @@ style(fig2, height=300, x_title="Country of organization headquarters",
 st.plotly_chart(fig2, config=PLOTLY_CONFIG, width="stretch")
 st.caption(
     "Frontier model training compute share by country of organization headquarters, 2020–2026. "
-    "United States leads with 90.6%, followed by China with 8.1% and the rest of the world at 1.3%."
+    "United States leads with 90.6% (Blue), followed by China with 8.1% (Orange) and the rest of the world at 1.3% (Grey). "
+    "These national totals match the sum of the corresponding blue, orange, and grey bars in Chart 1 above."
 )
 
 trace(

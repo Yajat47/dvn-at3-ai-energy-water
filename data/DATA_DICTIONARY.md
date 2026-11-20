@@ -389,9 +389,9 @@ Training compute breakdown and shares for top AI organizations and labs since 20
 - **Latest observation:** 2026
 - **Transform:** `scripts/build_concentration.py` from `epoch_notable_ai_models`
   1. Filter epoch_notable_ai_models to models from 2020 onwards with positive training compute.
-  2. Sum total FLOP per primary organization and identify the top 7 organisations.
-  3. Aggregate all remaining organisations into Rest of industry.
-  4. Calculate each organisation's share of total post-2020 compute.
+  2. Sum total FLOP per primary organization and identify top named frontier labs.
+  3. Aggregate remaining models by geographic origin (Other US, Other China, Rest of world).
+  4. Calculate each entity's share of total post-2020 compute.
 
 | Column | Type | Unit | Description |
 |---|---|---|---|
