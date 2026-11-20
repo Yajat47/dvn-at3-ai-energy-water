@@ -62,10 +62,13 @@ if not chosen_orgs:
 else:
     filtered_orgs = orgs[orgs["organization"].isin(chosen_orgs)].sort_values("share_pct", ascending=True)
     
-    # Use SERIES[0] for top leaders, SERIES[1] for next, CONTEXT for rest of industry
+    # Colors match geography consistently across both charts:
+    # Blue (SERIES[0]) for United States, Orange (SERIES[1]) for China (Alibaba), Grey (CONTEXT) for rest
     bar_colors = [
-        SERIES[0] if org in ["OpenAI", "xAI"] else SERIES[1] if org in ["Meta AI", "Google DeepMind"] else CONTEXT
-        for org in filtered_orgs["organization"]
+        SERIES[1] if org == "Alibaba" or "China" in country else (
+            SERIES[0] if "United States" in country or org in ["OpenAI", "xAI", "Meta AI", "Google DeepMind", "Anthropic", "Cursor"] else CONTEXT
+        )
+        for org, country in zip(filtered_orgs["organization"], filtered_orgs["country"])
     ]
     
     fig1 = go.Figure(go.Bar(
@@ -87,7 +90,8 @@ else:
     st.plotly_chart(fig1, config=PLOTLY_CONFIG, width="stretch")
     st.caption(
         "Share of total floating-point operations (FLOP) used to train notable models released 2020–2026. "
-        "Source: Epoch AI Notable AI Models dataset. Values are labelled directly on each bar."
+        "Source: Epoch AI Notable AI Models dataset. Values are labelled directly on each bar. "
+        "Bar colors match geography across both charts: Blue for US organizations, Orange for China (Alibaba), Grey for other."
     )
 
 raw_models_df = data.sample("epoch_notable_ai_models.csv")
@@ -179,9 +183,10 @@ with st.expander("Design notes: why these charts"):
         "- **Horizontal bar for organizations:** The visual task is ranking and comparing magnitude across 8 entities. "
         "Horizontal bars allow full organization names to read naturally from left to right without tilted text, "
         "and direct percentage labels mean readers do not need to hover.\n"
-        "- **Categorical colors by role:** The two leading entities get `#2a78d6` (primary series), next tier gets "
-        "`#eb6834` (secondary series), and all remaining players get `#b4b2a9` (context grey). This follows the "
-        "team's strict 3-color CVD-checked palette.\n"
+        "- **Color consistency across charts:** Colors consistently reflect geography across both charts: "
+        "Blue (`#2a78d6`) for the United States and US-based organizations (OpenAI, xAI, Meta, Google DeepMind, Anthropic), "
+        "Orange (`#eb6834`) for China and Chinese organizations (Alibaba), and Grey (`#b4b2a9`) for the rest of the world and industry. "
+        "This avoids visual confusion and strictly follows the team's CVD-checked palette.\n"
         "- **Alternative rejected: a pie chart or treemap.** A pie chart asks readers to compare slice angles, "
         "which humans judge far less accurately than bar lengths, and thin slivers below 3% become illegible.\n"
         "- **Country column chart:** Compares the 3 discrete geographic segments on an honest 0–100% axis, "

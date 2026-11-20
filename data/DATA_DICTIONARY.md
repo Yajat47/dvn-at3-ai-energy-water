@@ -10,7 +10,7 @@ Generated from `data/data_dictionary.yml` by `scripts/build_all.py`. Edit the YA
 | `OWID-DC-SHARE` | Share of total electricity demand used by data centers | Our World in Data, based on IEA (2025, 2026) and Ember (2026) | https://ourworldindata.org/grapher/data-centers-share-electricity-demand | CC BY 4.0 (Our World in Data processing); underlying IEA data under IEA terms | 2026-10-20 |
 | `OWID-EMBER-DEMAND` | Electricity demand | Our World in Data, based on Ember (2026) | https://ourworldindata.org/grapher/electricity-demand | CC BY 4.0 | 2026-10-20 |
 | `GOOGLE-2026-ENV` | Environmental Report 2026 | Google | https://sustainability.google/files/google-2026-environmental-report.pdf | Company report (figures quoted with attribution) | 2026-10-26 |
-| `EPOCH-MODELS` | Notable AI Models | Epoch AI | https://epoch.ai/data/notable-ai-models | CC BY 4.0 | 2026-10-21 |
+| `EPOCH-MODELS` | Notable AI Models | Epoch AI | https://epoch.ai/data/notable-ai-models | CC BY 4.0 | 2026-11-20 |
 | `EPOCH-HARDWARE` | Machine Learning Hardware | Epoch AI | https://epoch.ai/data/machine-learning-hardware | CC BY 4.0 | 2026-10-21 |
 
 ## Source samples

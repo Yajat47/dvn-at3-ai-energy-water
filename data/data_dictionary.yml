@@ -45,7 +45,7 @@ sources:
     publisher: Epoch AI
     url: https://epoch.ai/data/notable-ai-models
     licence: CC BY 4.0
-    retrieved: '2026-10-21'
+    retrieved: '2026-11-20'
     cadence: Updated continuously as models are published
     owner: Niki
   - id: EPOCH-HARDWARE
