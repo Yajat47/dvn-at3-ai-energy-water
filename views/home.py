@@ -73,7 +73,7 @@ st.markdown(
     f"{dalles_share:.0f}% of it.\n"
     f"- **Concentration (page 5).** Across notable AI models since 2020, training compute is concentrated in a tiny "
     f"handful of developers: four organizations account for {top4_conc:.0f}% of all compute ({top_org_name} alone: "
-    f"{top_org_pct:.0f}%), and {us_conc:.0f}% of it sits in the United States."
+    f"{top_org_pct:.0f}%), and organizations headquartered in the United States account for {us_conc:.0f}%."
 )
 st.markdown(
     f"That concentration is what turns a small global number into a local planning question for {PERSONA['name']}. "

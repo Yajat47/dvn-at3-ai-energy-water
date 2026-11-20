@@ -1,6 +1,6 @@
 # Part 2 checklist (due Fri 20 Nov 2026, 11:59pm)
 
-Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests the ones marked **auto**; the rest need a person. "Status" is as of 6 Nov 2026. The submission names the tag `final`.
+Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests the ones marked **auto**; the rest need a person. "Status" is as of 20 Nov 2026. The submission names the tag `final`.
 
 ## Timeline
 
@@ -30,7 +30,7 @@ Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests 
 | 10 | Units, baselines, time coverage wherever numbers are compared | Chart captions and number-card captions | All | manual | Pass on every page |
 | 11 | On-screen claims stay within the data | No causal claims or extrapolation beyond the files | All | manual | Pages 1, 2 pass; **page 4 cites two report claims that are not in the data package** |
 | 12 | Every chart has a title or caption saying what it shows | `####` title stating the finding plus `st.caption` | All | manual | Pass on every page |
-| 13 | At least four charts | Page 1 has 3; each other page adds at least 1 | All | auto | Pass (7 charts) |
+| 13 | At least four charts | Page 1 has 3; each other page adds at least 1 | All | auto | Pass (9 charts) |
 | 14 | At least three Visual Vocabulary families | See the family plan below | All | manual | Pass: change over time, part-to-whole, magnitude |
 | 15 | Form matches task | Design log entry per chart | All | manual | Pass on every page |
 | 16 | Every axis and legend labelled with units | `style(fig, x_title=, y_title=, legend_title=)` | All | auto | Pass |
@@ -51,7 +51,7 @@ Thirty pass/fail checks, one mark each. `python scripts/check_package.py` tests 
 
 ## Chart family plan (check 14)
 
-Families from the FT Visual Vocabulary. Three are needed across the app; the seven charts as built use three.
+Families from the FT Visual Vocabulary. Three are needed across the app; the nine charts as built use three.
 
 | Page | Chart | Family |
 |---|---|---|
